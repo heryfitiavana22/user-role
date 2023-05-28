@@ -10,6 +10,8 @@ export function PersonConnected({}: PersonConnectedProps) {
                 <label tabIndex={0}>
                     <Image
                         src="/images/avatar.png"
+                        width={48}
+                        height={48}
                         className="w-12 h-12 rounded-lg cursor-pointer"
                         alt=""
                     />

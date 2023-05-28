@@ -1,4 +1,4 @@
-import { styled } from "@stitches/react";
+import { styled } from "@/config";
 import { SVGProps } from "react";
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
@@ -6,20 +6,20 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
         xmlns="http://www.w3.org/2000/svg"
         width={24}
         height={24}
-        fill="none"
         {...props}
+        fill="none"
         className=""
     >
         <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M5 17h8m-8-5h14m-8-5h8"
+            strokeWidth={2}
+            d="M4 7h16M6 7v11a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V7M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2H9V5Z"
             className={props.className}
         />
     </svg>
 );
 
-export const MenuIcon = styled(SvgComponent, {
+export const DeleteIcon = styled(SvgComponent, {
     stroke: "CurrentColor",
 });

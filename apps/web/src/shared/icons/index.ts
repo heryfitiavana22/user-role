@@ -6,3 +6,5 @@ export { LogOutIcon } from "./LogOut";
 export { MenuIcon } from "./MenuIcon";
 export { CloseIcon } from "./CloseIcon";
 export { RoleIcon } from "./RoleIcon";
+export { EditIcon } from "./EditIcon";
+export { DeleteIcon } from "./DeleteIcon";

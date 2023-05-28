@@ -1,8 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+import { brandColor, neutral } from "./src/config";
 module.exports = {
     content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                brandColor,
+                neutral,
+            },
+        },
     },
     daisyui: {
         themes: [

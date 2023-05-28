@@ -1,4 +1,3 @@
-"use client";
 import { styled } from "@stitches/react";
 import { SVGProps } from "react";
 
