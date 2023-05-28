@@ -1,7 +1,6 @@
 "use client";
-import { PropsWithChildren, ComponentProps } from "react";
+import { PropsWithChildren } from "react";
 import classNames from "classnames";
-import { Tooltip } from "@nextui-org/react";
 import Link from "next/link";
 
 export function IconWrapper({
@@ -11,7 +10,7 @@ export function IconWrapper({
     isActive = false,
 }: IconWrapperProps) {
     return (
-        <Tooltip content={name} placement="right" color={"secondary"}>
+        <div className="tooltip tooltip-primary tooltip-right" data-tip={name}>
             <Link href={href}>
                 <div
                     className={classNames(
@@ -25,12 +24,12 @@ export function IconWrapper({
                     <span className="ml-2 md:hidden">{name}</span>
                 </div>
             </Link>
-        </Tooltip>
+        </div>
     );
 }
 
 type IconWrapperProps = PropsWithChildren<{
     isActive?: boolean;
     name: string;
-    href: string
+    href: string;
 }>;

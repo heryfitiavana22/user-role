@@ -9,10 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/react": "1.0.0-beta.13",
-    "axios": "^1.4.0",
+    "@stitches/react": "^1.2.8",
     "daisyui": "^2.51.6",
-    "iron-session": "^6.3.1",
     "next": "^13.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

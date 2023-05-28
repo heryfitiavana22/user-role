@@ -1,31 +1,34 @@
 "use client";
-import { Avatar, Popover } from "@nextui-org/react";
+import Image from "next/image";
 import { UserOption } from "./components";
 import { LogOutIcon, SettingsIcon } from "@/shared/icons";
 
 export function PersonConnected({}: PersonConnectedProps) {
     return (
-        <div className="flex justify-center bg-transparent overflow-hidden">
-            <Popover placement="right">
-                <Popover.Trigger>
-                    <Avatar
-                        className=""
-                        size="lg"
+        <div className="flex justify-center bg-transparent">
+            <div className="dropdown dropdown-right dropdown-end">
+                <label tabIndex={0}>
+                    <Image
                         src="/images/avatar.png"
-                        squared
-                        pointer
+                        className="w-12 h-12 rounded-lg cursor-pointer"
+                        alt=""
                     />
-                </Popover.Trigger>
-                <Popover.Content css={{ minHeight: 80, borderRadius: 8, overflow: "hidden" }}>
-                    <div className="">
+                </label>
+                <ul
+                    tabIndex={0}
+                    className="dropdown-content menu p-2 shadow rounded-box w-52"
+                >
+                    <li>
                         <UserOption name="Paramètres" icon={<SettingsIcon />} />
+                    </li>
+                    <li>
                         <UserOption
                             name="Se déconnecter"
                             icon={<LogOutIcon />}
                         />
-                    </div>
-                </Popover.Content>
-            </Popover>
+                    </li>
+                </ul>
+            </div>
         </div>
     );
 }

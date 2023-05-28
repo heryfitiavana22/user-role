@@ -1,5 +1,5 @@
 "use client";
-import { styled } from "@nextui-org/react";
+import { styled } from "@stitches/react";
 import { SVGProps } from "react";
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
