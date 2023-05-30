@@ -1,82 +1,43 @@
-import Image from "next/image";
-import { Td, Th } from "./components";
-import { DeleteIcon, EditIcon } from "../icons";
+import { Button } from "../button";
+import { ChevronLeft, ChevronRight } from "../icons";
+import { Th } from "./components";
 
-export function Table({}: TableProps) {
+export function Table<T>({ column, data, displayRow }: TableProps<T>) {
     return (
-        <table className="table w-full">
-            <thead>
-                <tr>
-                    <Th>Nom</Th>
-                    <Th>Rôles</Th>
-                    <Th>Action</Th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <Td>
-                        <div className="flex items-center space-x-3">
-                            <div className="avatar">
-                                <div className="mask mask-squircle w-12 h-12">
-                                    <Image
-                                        src="/images/avatar.png"
-                                        width={48}
-                                        height={48}
-                                        alt="Avatar Tailwind CSS Component"
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <div className="font-bold">Hart Hagerty</div>
-                                <div className="text-sm opacity-50">
-                                    tutoriel.mbl@gmail.com
-                                </div>
-                            </div>
-                        </div>
-                    </Td>
-                    <Td>Super account Manager</Td>
-                    <Td>
-                        <div className="flex gap-2">
-                            <span
-                                className="text-blue-400 tooltip tooltip-bottom cursor-pointer"
-                                data-tip="Modifier"
-                            >
-                                <EditIcon />
-                            </span>
-                            <span
-                                className="text-red-400 tooltip tooltip-bottom cursor-pointer"
-                                data-tip="Modifier"
-                            >
-                                <DeleteIcon />
-                            </span>
-                        </div>
-                    </Td>
-                </tr>
-                <tr>
-                    <Td>
-                        <div className="flex items-center space-x-3">
-                            <div className="avatar">
-                                <div className="mask mask-squircle w-12 h-12">
-                                    <Image
-                                        src="/images/avatar.png"
-                                        width={48}
-                                        height={48}
-                                        alt="Avatar Tailwind CSS Component"
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <div className="font-bold">Brice Swyre</div>
-                                <div className="text-sm opacity-50">China</div>
-                            </div>
-                        </div>
-                    </Td>
-                    <Td>Super account Manager</Td>
-                    <Td>Red</Td>
-                </tr>
-            </tbody>
-        </table>
+        <div className="overflow-x-auto overflow-y-hidden">
+            <table className="table w-full">
+                <thead>
+                    <tr>
+                        {column.map((c, k) => (
+                            <Th key={k}>{c}</Th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((item, k) => (
+                        <tr key={k}>{displayRow(item)}</tr>
+                    ))}
+                </tbody>
+            </table>
+            <div className="flex justify-end w-full mt-4">
+                <div className="btn-group">
+                    <Button color={"secondary"}>
+                        <ChevronLeft />
+                    </Button>
+                    <div className="grid place-items-center bg-secondary text-white px-2">
+                        Pages 1 of 2
+                    </div>
+                    <Button color={"secondary"}>
+                        <ChevronRight />
+                    </Button>
+                </div>
+            </div>
+        </div>
     );
 }
 
-type TableProps = {};
+type TableProps<T> = {
+    column: string[];
+    data: T[];
+    displayRow: (row: T) => React.ReactNode;
+};

@@ -10,7 +10,7 @@ export function IconWrapper({
     isActive = false,
 }: IconWrapperProps) {
     return (
-        <div className="tooltip tooltip-primary tooltip-right" data-tip={name}>
+        <div className="md:tooltip md:tooltip-primary md:tooltip-right" data-tip={name}>
             <Link href={href}>
                 <div
                     className={classNames(

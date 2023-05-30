@@ -29,7 +29,7 @@ export function Sidebar({}: SidebarProps) {
                             isOpen ? "right-0" : "right-full"
                         )}
                     >
-                        <div>
+                        <div className="flex flex-col items-baseline md:block">
                             <IconWrapper
                                 name="Dashboard"
                                 href="/"
@@ -46,7 +46,7 @@ export function Sidebar({}: SidebarProps) {
                             </IconWrapper>
                             <IconWrapper
                                 name="Rôles"
-                                href="role"
+                                href="roles"
                                 isActive={pathname.includes("/role")}
                             >
                                 <RoleIcon />

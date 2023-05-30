@@ -8,3 +8,5 @@ export { CloseIcon } from "./CloseIcon";
 export { RoleIcon } from "./RoleIcon";
 export { EditIcon } from "./EditIcon";
 export { DeleteIcon } from "./DeleteIcon";
+export { ChevronLeft } from "./ChevronLeft";
+export { ChevronRight } from "./ChevronRight";

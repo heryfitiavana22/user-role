@@ -1,7 +1,7 @@
 import { createStitches } from "@stitches/react";
 import { brandColor, neutral } from "./colors";
 
-export const { styled } = createStitches({
+export const { styled, getCssText } = createStitches({
     theme: {
         colors: {
             brandColor50: brandColor[50],

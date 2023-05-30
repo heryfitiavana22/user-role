@@ -1,10 +1,10 @@
-import { styled } from "@/config"
-  
+import { styled } from "@/config";
+
 export const Th = styled("th", {
-    background: "$brandColor100",
-})
+    backgroundColor: "$brandColor100",
+    position: "static !important"
+});
 
 export const Td = styled("td", {
-    background: "$neutral100"
-})
-
+    backgroundColor: "$neutral100",
+});

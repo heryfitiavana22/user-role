@@ -1,16 +1,16 @@
 import { Users } from "@/features";
+import { Button } from "@/shared";
 import Link from "next/link";
 
 export default function Page({}: PageProps) {
     return (
         <div className="">
             <div className="flex justify-between">
-                <h3>Les utilisateurs</h3>
-                <Link
-                    href="#"
-                    className="flex place-items-center bg-violet-400 text-white h-9 px-5 rounded-md"
-                >
-                    Ajouter
+                <h3 className="text-xl font-semibold">Les utilisateurs</h3>
+                <Link href="users/add">
+                    <Button color={"secondary"} size={"md"}>
+                        Ajouter
+                    </Button>
                 </Link>
             </div>
             <Users />
