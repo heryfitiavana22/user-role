@@ -5,6 +5,7 @@
         "noImplicitAny": true,
         "resolveJsonModule": true,
         "moduleResolution": "node",
+        "types": ["types/index.d.ts"]
     },
     "exclude": ["node_modules"],
     "files": ["src/app.ts"],
