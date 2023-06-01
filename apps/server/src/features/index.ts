@@ -1,3 +1,2 @@
-export * from './publication'
-export * from './notification'
 export * from './user'
+export * from './role'

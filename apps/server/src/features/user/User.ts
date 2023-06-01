@@ -1,6 +1,10 @@
 import { Schema, model } from "mongoose";
 
-const user = new Schema<User>({
+type IUser = Pick<User, "email" | "imageURL" | "name"> & {
+    role: any;
+};
+
+const user = new Schema<IUser>({
     name: {
         type: String,
         required: true,
@@ -10,8 +14,11 @@ const user = new Schema<User>({
         required: true,
     },
     role: {
-        
+        type: Schema.Types.ObjectId,
+        ref: "Role",
     },
 });
 
 export const User = model("User", user);
+
+export type UserModel = typeof User
