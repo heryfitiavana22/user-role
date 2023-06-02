@@ -10,15 +10,15 @@ connectToDatabase();
 
 app.use(cors());
 app.use(express.static("public"));
-app.use(express.json())
+app.use(express.json());
 
 app.get("/", (request, response) => {
-    response.send({});
+  response.send({});
 });
 
 app.use(userRouter);
 app.use(roleRouter);
 
 app.listen(8000, () => {
-    console.log("server running at port : 8000");
+  console.log("server running at port : 8000");
 });

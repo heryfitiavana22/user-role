@@ -16,6 +16,6 @@ router.post(userURL, userController.add);
 router.put(userURL, userController.update);
 router.delete(userURL + ":id", userController.delete);
 
-router.get("/testt", userController.getAll)
+router.get("/testt", userController.getAll);
 
 export const userRouter = router;

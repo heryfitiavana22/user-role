@@ -1,3 +1,1 @@
-export function defineRoleAbilities(user: User) {
-
-}
+export function defineRoleAbilities(user: User) {}
