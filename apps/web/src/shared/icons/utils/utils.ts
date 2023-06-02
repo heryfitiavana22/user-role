@@ -1,5 +1,5 @@
 export function widthProps() {
-  return {
-    strokeWidth: 3,
-  };
+    return {
+        strokeWidth: 3,
+    }
 }

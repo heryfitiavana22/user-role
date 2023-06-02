@@ -1,5 +1,5 @@
 export default function Page({}: PageProps) {
-  return <>rôles</>;
+    return <>rôles</>
 }
 
-type PageProps = {};
+type PageProps = {}

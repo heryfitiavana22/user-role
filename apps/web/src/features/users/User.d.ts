@@ -1,4 +1,4 @@
 declare type UserForm = User & {
-  fileList: File[];
-  image: File;
-};
+    fileList: File[]
+    image: File
+}

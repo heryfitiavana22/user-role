@@ -1,1 +1,1 @@
-export { PersonConnected } from "./PersonConnected";
+export { PersonConnected } from './PersonConnected'

@@ -1,5 +1,5 @@
 export default function Page({}: PageProps) {
-  return <>statistics</>;
+    return <>statistics</>
 }
 
-type PageProps = {};
+type PageProps = {}

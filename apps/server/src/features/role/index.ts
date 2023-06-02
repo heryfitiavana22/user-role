@@ -1,2 +1,2 @@
-export * from "./role.router";
-export * from "./role.service";
+export * from './role.router'
+export * from './role.service'

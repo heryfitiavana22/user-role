@@ -1,5 +1,5 @@
 export function HeroAuth({}: HeroAuthProps) {
-  return <div className=""></div>;
+    return <div className=""></div>
 }
 
-type HeroAuthProps = {};
+type HeroAuthProps = {}
