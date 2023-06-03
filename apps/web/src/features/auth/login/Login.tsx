@@ -1,7 +1,7 @@
-'use client'
-import Link from 'next/link'
-import { useForm } from 'react-hook-form'
-import { useLogin } from './hooks'
+"use client"
+import Link from "next/link"
+import { useForm } from "react-hook-form"
+import { useLogin } from "./hooks"
 
 export type LoginValue = {
     email: string
@@ -24,7 +24,7 @@ export function Login({}: LoginProps) {
                         type="text"
                         placeholder="adresse email"
                         className="input bg-gray-100 w-full max-w-xs"
-                        {...register('email')}
+                        {...register("email")}
                         required
                     />
                 </div>
@@ -36,7 +36,7 @@ export function Login({}: LoginProps) {
                         type="password"
                         placeholder="mot de passe"
                         className="input bg-gray-100 w-full max-w-xs"
-                        {...register('password')}
+                        {...register("password")}
                         required
                     />
                 </div>
@@ -51,7 +51,7 @@ export function Login({}: LoginProps) {
                         </label>
                     </div>
                     <Link
-                        href={'/forgotpassword'}
+                        href={"/forgotpassword"}
                         className="text-sm text-violet-500"
                     >
                         Mot de passe oublié ?

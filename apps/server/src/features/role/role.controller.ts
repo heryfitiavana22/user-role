@@ -1,5 +1,5 @@
-import { Request, Response } from 'express'
-import { RoleService } from './role.service'
+import { Request, Response } from "express"
+import { RoleService } from "./role.service"
 
 export class RoleController {
     constructor(private service: RoleService) {}

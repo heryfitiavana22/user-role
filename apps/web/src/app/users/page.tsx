@@ -1,6 +1,6 @@
-import { Users } from '@/features'
-import { Button } from '@/shared'
-import Link from 'next/link'
+import { Users } from "@/features"
+import { Button } from "@/shared"
+import Link from "next/link"
 
 export default function Page({}: PageProps) {
     return (
@@ -8,7 +8,7 @@ export default function Page({}: PageProps) {
             <div className="flex justify-between">
                 <h3 className="text-xl font-semibold">Les utilisateurs</h3>
                 <Link href="users/add">
-                    <Button color={'secondary'} size={'md'}>
+                    <Button color={"secondary"} size={"md"}>
                         Ajouter
                     </Button>
                 </Link>
@@ -19,7 +19,7 @@ export default function Page({}: PageProps) {
 }
 
 export const metadata = {
-    title: 'Utilisateurs',
+    title: "Utilisateurs",
 }
 
 type PageProps = {}

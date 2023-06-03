@@ -1,4 +1,4 @@
-import { Login } from '@/features'
+import { Login } from "@/features"
 
 export default async function Page({}: PageProps) {
     return (

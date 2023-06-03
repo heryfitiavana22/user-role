@@ -1,4 +1,4 @@
-import { FormUser } from '@/features'
+import { FormUser } from "@/features"
 
 export default function Page({ params }: PageProps) {
     return (

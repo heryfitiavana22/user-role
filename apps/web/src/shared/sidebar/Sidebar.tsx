@@ -1,5 +1,5 @@
-'use client'
-import { useState } from 'react'
+"use client"
+import { useState } from "react"
 import {
     CloseIcon,
     DashboardIcon,
@@ -7,10 +7,10 @@ import {
     RoleIcon,
     StatisticsIcon,
     UsersIcon,
-} from '../icons'
-import { IconWrapper, PersonConnected } from './components'
-import classNames from 'classnames'
-import { usePathname } from 'next/navigation'
+} from "../icons"
+import { IconWrapper, PersonConnected } from "./components"
+import classNames from "classnames"
+import { usePathname } from "next/navigation"
 
 export function Sidebar({}: SidebarProps) {
     const [isOpen, setIsOpen] = useState(false)
@@ -25,36 +25,36 @@ export function Sidebar({}: SidebarProps) {
                     </div>
                     <div
                         className={classNames(
-                            'grid place-items-center bg-violet-200 z-[1111] fixed top-0 w-full h-full transition-all md:bg-transparent md:static md:mt-5 md:block',
-                            isOpen ? 'right-0' : 'right-full'
+                            "grid place-items-center bg-violet-200 z-[1111] fixed top-0 w-full h-full transition-all md:bg-transparent md:static md:mt-5 md:block",
+                            isOpen ? "right-0" : "right-full"
                         )}
                     >
                         <div className="flex flex-col items-baseline md:block">
                             <IconWrapper
                                 name="Dashboard"
                                 href="/"
-                                isActive={pathname === '/'}
+                                isActive={pathname === "/"}
                             >
                                 <DashboardIcon />
                             </IconWrapper>
                             <IconWrapper
                                 name="Utilisateurs"
                                 href="users"
-                                isActive={pathname.includes('/users')}
+                                isActive={pathname.includes("/users")}
                             >
                                 <UsersIcon />
                             </IconWrapper>
                             <IconWrapper
                                 name="Rôles"
                                 href="roles"
-                                isActive={pathname.includes('/role')}
+                                isActive={pathname.includes("/role")}
                             >
                                 <RoleIcon />
                             </IconWrapper>
                             <IconWrapper
                                 name="Statistiques"
                                 href="/statistics"
-                                isActive={pathname.includes('/statistics')}
+                                isActive={pathname.includes("/statistics")}
                             >
                                 <StatisticsIcon />
                             </IconWrapper>

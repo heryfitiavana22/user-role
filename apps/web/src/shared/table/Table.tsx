@@ -1,6 +1,6 @@
-import { Button } from '../button'
-import { ChevronLeft, ChevronRight } from '../icons'
-import { Th } from './components'
+import { Button } from "../button"
+import { ChevronLeft, ChevronRight } from "../icons"
+import { Th } from "./components"
 
 export function Table<T>({ column, data, displayRow }: TableProps<T>) {
     return (
@@ -21,13 +21,13 @@ export function Table<T>({ column, data, displayRow }: TableProps<T>) {
             </table>
             <div className="flex justify-end w-full mt-4">
                 <div className="btn-group">
-                    <Button color={'secondary'}>
+                    <Button color={"secondary"}>
                         <ChevronLeft />
                     </Button>
                     <div className="grid place-items-center bg-secondary text-white px-2">
                         Pages 1 of 2
                     </div>
-                    <Button color={'secondary'}>
+                    <Button color={"secondary"}>
                         <ChevronRight />
                     </Button>
                 </div>

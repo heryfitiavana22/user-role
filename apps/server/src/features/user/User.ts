@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from "mongoose"
 
-type IUser = Pick<User, 'email' | 'imageURL' | 'name'> & {
+type IUser = Pick<User, "email" | "imageURL" | "name"> & {
     role: any
 }
 
@@ -15,10 +15,10 @@ const user = new Schema<IUser>({
     },
     role: {
         type: Schema.Types.ObjectId,
-        ref: 'Role',
+        ref: "Role",
     },
 })
 
-export const User = model('User', user)
+export const User = model("User", user)
 
 export type UserModel = typeof User

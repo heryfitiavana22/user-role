@@ -1,4 +1,4 @@
-import { RoleModel } from './Role'
+import { RoleModel } from "./Role"
 
 export class RoleService {
     constructor(private Role: RoleModel) {}

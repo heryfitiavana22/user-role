@@ -1,7 +1,7 @@
-'use client'
-import { PropsWithChildren } from 'react'
-import classNames from 'classnames'
-import Link from 'next/link'
+"use client"
+import { PropsWithChildren } from "react"
+import classNames from "classnames"
+import Link from "next/link"
 
 export function IconWrapper({
     name,
@@ -17,9 +17,9 @@ export function IconWrapper({
             <Link href={href}>
                 <div
                     className={classNames(
-                        'flex justify-center items-center h-12 p-2 my-1 text-slate-500 rounded-md cursor-pointer transition-all duration-300 hover:bg-violet-300 md:hover:bg-violet-200 md:w-12',
+                        "flex justify-center items-center h-12 p-2 my-1 text-slate-500 rounded-md cursor-pointer transition-all duration-300 hover:bg-violet-300 md:hover:bg-violet-200 md:w-12",
                         {
-                            'bg-violet-100': isActive,
+                            "bg-violet-100": isActive,
                         }
                     )}
                 >

@@ -1,15 +1,15 @@
-import { DeleteIcon, EditIcon, Table, TableAction, Td } from '@/shared'
-import Image from 'next/image'
+import { DeleteIcon, EditIcon, Table, TableAction, Td } from "@/shared"
+import Image from "next/image"
 
 export function Users({}: UsersProps) {
-    const column = ['Nom', 'Rôles', 'Action']
+    const column = ["Nom", "Rôles", "Action"]
     const data: User[] = [
         {
-            _id: '1',
-            name: 'Hart Hagerty',
-            email: 'tutoriel.mbl@gmail.com',
-            imageURL: '/images/avatar.png',
-            role: 'Super account Manager',
+            _id: "1",
+            name: "Hart Hagerty",
+            email: "tutoriel.mbl@gmail.com",
+            imageURL: "/images/avatar.png",
+            role: { name: "Super account Manager" } as any,
         },
     ]
     return (
@@ -42,7 +42,7 @@ export function Users({}: UsersProps) {
                                     </div>
                                 </div>
                             </Td>
-                            <Td>{user.role}</Td>
+                            <Td>{user.role.name}</Td>
                             <Td>
                                 <div className="flex gap-2">
                                     <TableAction

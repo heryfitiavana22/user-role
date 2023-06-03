@@ -7,4 +7,4 @@ declare interface Role {
     }
 }
 
-declare type CustomCRUD = 'create' | 'read' | 'update' | 'delete' | 'all'
+declare type CustomCRUD = "create" | "read" | "update" | "delete" | "all"

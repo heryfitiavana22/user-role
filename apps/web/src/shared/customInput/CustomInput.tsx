@@ -1,6 +1,6 @@
-'use client'
-import { HTMLInputTypeAttribute, useState } from 'react'
-import { FieldValues, Path, UseFormRegister } from 'react-hook-form'
+"use client"
+import { HTMLInputTypeAttribute, useState } from "react"
+import { FieldValues, Path, UseFormRegister } from "react-hook-form"
 
 export function CustomInput<T extends FieldValues>({
     label,

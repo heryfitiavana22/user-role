@@ -1,5 +1,5 @@
-import { styled } from '@stitches/react'
-import { SVGProps } from 'react'
+import { styled } from "@stitches/react"
+import { SVGProps } from "react"
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     <svg
@@ -21,5 +21,5 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
 )
 
 export const MenuIcon = styled(SvgComponent, {
-    stroke: 'CurrentColor',
+    stroke: "CurrentColor",
 })

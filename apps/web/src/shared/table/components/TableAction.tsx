@@ -1,6 +1,6 @@
-import { PropsWithChildren } from 'react'
-import classNames from 'classnames'
-import Link from 'next/link'
+import { PropsWithChildren } from "react"
+import classNames from "classnames"
+import Link from "next/link"
 
 export function TableAction({
     datatip,
@@ -11,7 +11,7 @@ export function TableAction({
     return (
         <Link
             className={classNames(
-                'tooltip tooltip-bottom cursor-pointer',
+                "tooltip tooltip-bottom cursor-pointer",
                 className
             )}
             data-tip={datatip}

@@ -1,5 +1,5 @@
-import { styled } from '@stitches/react'
-import { SVGProps } from 'react'
+import { styled } from "@stitches/react"
+import { SVGProps } from "react"
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     <svg
@@ -18,5 +18,5 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
 )
 
 export const RoleIcon = styled(SvgComponent, {
-    fill: 'CurrentColor',
+    fill: "CurrentColor",
 })

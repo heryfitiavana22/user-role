@@ -1,10 +1,10 @@
-import { UserModel } from './User'
+import { UserModel } from "./User"
 
 export class UserService {
     constructor(private User: UserModel) {}
 
     findAll = () => {
-        return this.User.find().populate<{ role: Role }>('role').exec()
+        return this.User.find().populate<{ role: Role }>("role").exec()
     }
 
     findOne = (_id: string) => {

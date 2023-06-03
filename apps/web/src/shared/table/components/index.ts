@@ -1,2 +1,2 @@
-export * from './TableComponents'
-export * from './TableAction'
+export * from "./TableComponents"
+export * from "./TableAction"

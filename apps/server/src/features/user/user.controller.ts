@@ -1,5 +1,5 @@
-import { Request, Response } from 'express'
-import { UserService } from './user.service'
+import { Request, Response } from "express"
+import { UserService } from "./user.service"
 
 export class UserController {
     constructor(private service: UserService) {}
@@ -24,8 +24,8 @@ export class UserController {
         response.send(data)
     }
 
-    delete = async (request: Request<{ id: string }>, response: Response) => {
-        const data = await this.service.delete(request.params.id)
+    delete = async (request: Request<{ _id: string }>, response: Response) => {
+        const data = await this.service.delete(request.params._id)
         response.send(data)
     }
 }

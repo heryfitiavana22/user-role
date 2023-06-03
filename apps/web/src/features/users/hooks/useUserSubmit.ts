@@ -1,4 +1,4 @@
-import { SubmitHandler } from 'react-hook-form'
+import { SubmitHandler } from "react-hook-form"
 
 export function useUserSubmit(type: CreateOrUpdate) {
     const onSubmit: SubmitHandler<UserForm> = (user) => {

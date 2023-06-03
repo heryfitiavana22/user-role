@@ -1,1 +1,1 @@
-declare type CreateOrUpdate = 'create' | 'update'
+declare type CreateOrUpdate = "create" | "update"

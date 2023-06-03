@@ -1,7 +1,7 @@
-'use client'
-import { Button, CustomInput } from '@/shared'
-import { useForm } from 'react-hook-form'
-import { useUserSubmit } from '../hooks'
+"use client"
+import { Button, CustomInput } from "@/shared"
+import { useForm } from "react-hook-form"
+import { useUserSubmit } from "../hooks"
 
 export function FormUser({ type, id }: FormUserProps) {
     const { register, handleSubmit } = useForm<UserForm>()
@@ -30,7 +30,7 @@ export function FormUser({ type, id }: FormUserProps) {
                 <input
                     type="file"
                     className="file-input file-input-primary file-input-bordered w-full max-w-xs"
-                    {...register('fileList')}
+                    {...register("fileList")}
                 />
             </div>
             <div className="form-control w-full max-w-xs">
@@ -39,14 +39,14 @@ export function FormUser({ type, id }: FormUserProps) {
                 </label>
                 <select
                     className="select select-bordered"
-                    {...register('role', { required: true })}
+                    {...register("role", { required: true })}
                 >
                     <option>Super account</option>
                     <option>Manager</option>
                 </select>
             </div>
-            <Button color={'pirmary'} className="mt-3">
-                {type == 'create' ? 'Ajouter' : 'Modifier'}
+            <Button color={"pirmary"} className="mt-3">
+                {type == "create" ? "Ajouter" : "Modifier"}
             </Button>
         </form>
     )

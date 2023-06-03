@@ -1,5 +1,5 @@
-import { createStitches } from '@stitches/react'
-import { brandColor, neutral } from './colors'
+import { createStitches } from "@stitches/react"
+import { brandColor, neutral } from "./colors"
 
 export const { styled, getCssText } = createStitches({
     theme: {

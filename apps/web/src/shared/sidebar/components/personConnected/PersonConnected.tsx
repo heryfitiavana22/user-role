@@ -1,7 +1,7 @@
-'use client'
-import Image from 'next/image'
-import { UserOption } from './components'
-import { LogOutIcon, SettingsIcon } from '@/shared/icons'
+"use client"
+import Image from "next/image"
+import { UserOption } from "./components"
+import { LogOutIcon, SettingsIcon } from "@/shared/icons"
 
 export function PersonConnected({}: PersonConnectedProps) {
     return (

@@ -1,9 +1,9 @@
-import { Sidebar } from '@/shared'
-import './global.css'
-import { Inter } from 'next/font/google'
-import { getCssText } from '@/config'
+import { Sidebar } from "@/shared"
+import "./global.css"
+import { Inter } from "next/font/google"
+import { getCssText } from "@/config"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] })
 
 export default function RootLayout({
     children,

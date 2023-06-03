@@ -1,5 +1,5 @@
-import { styled } from '@/config'
-import { SVGProps } from 'react'
+import { styled } from "@/config"
+import { SVGProps } from "react"
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     <svg
@@ -20,5 +20,5 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     </svg>
 )
 export const ChevronLeft = styled(SvgComponent, {
-    stroke: 'CurrentColor',
+    stroke: "CurrentColor",
 })
