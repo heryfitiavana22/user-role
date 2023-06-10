@@ -10,15 +10,16 @@
   },
   "dependencies": {
     "@stitches/react": "^1.2.8",
-    "daisyui": "^2.51.6",
+    "@tanstack/react-query": "^4.29.12",
+    "api-url": "*",
+    "daisyui": "^3.0.23",
     "next": "^13.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
-    "ui": "workspace:*",
+    "repository": "*",
     "types": "*",
-    "api-url": "*",
-    "repository": "*"
+    "ui": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",

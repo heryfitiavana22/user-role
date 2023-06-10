@@ -7,6 +7,7 @@ export async function updateOneData<T>(url: KeyURL, data: T) {
         headers: { "Content-type": getContentType(data) },
         body: JSON.stringify(data),
     })
+    if (!response.ok) throw new Error("Error on udpating data")
     if (response.status == 200)
         return {
             ok: true,

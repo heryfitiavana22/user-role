@@ -11,7 +11,7 @@ export function IconWrapper({
 }: IconWrapperProps) {
     return (
         <div
-            className="md:tooltip md:tooltip-primary md:tooltip-right"
+            className="md:tooltip tooltip-primary md:tooltip-right"
             data-tip={name}
         >
             <Link href={href}>

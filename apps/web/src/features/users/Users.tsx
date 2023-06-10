@@ -1,9 +1,19 @@
+"use client"
 import { DeleteIcon, EditIcon, Table, TableAction, Td } from "@/shared"
+import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
+import { getAllData } from "repository"
 
 export function Users({}: UsersProps) {
     const column = ["Nom", "Rôles", "Action"]
-    const data: User[] = [
+    const { data, isLoading } = useQuery({
+        queryKey: ["users"],
+        queryFn: () => getAllData<User>("user"),
+    })
+    console.log("data");
+    console.log(data);
+    
+    const dataOld: User[] = [
         {
             _id: "1",
             name: "Hart Hagerty",
@@ -17,7 +27,7 @@ export function Users({}: UsersProps) {
             <div className="w-full">
                 <Table
                     column={column}
-                    data={data}
+                    data={dataOld}
                     displayRow={(user) => (
                         <>
                             <Td>

@@ -20,14 +20,14 @@ export function Table<T>({ column, data, displayRow }: TableProps<T>) {
                 </tbody>
             </table>
             <div className="flex justify-end w-full mt-4">
-                <div className="btn-group">
-                    <Button color={"secondary"}>
+                <div className="join">
+                    <Button color={"secondary"} className="join-item">
                         <ChevronLeft />
                     </Button>
-                    <div className="grid place-items-center bg-secondary text-white px-2">
+                    <div className="grid place-items-center bg-secondary text-white px-2 join-item">
                         Pages 1 of 2
                     </div>
-                    <Button color={"secondary"}>
+                    <Button color={"secondary"} className="join-item">
                         <ChevronRight />
                     </Button>
                 </div>

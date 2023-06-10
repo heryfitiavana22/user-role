@@ -1,0 +1,5 @@
+export * from "./createData"
+export * from "./deleteOneData"
+export * from "./getAllData"
+export * from "./getOneData"
+export * from "./updateOneData"
