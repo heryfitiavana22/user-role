@@ -1,8 +1,16 @@
 "use client"
-import { DeleteIcon, EditIcon, Table, TableAction, Td } from "@/shared"
+import {
+    DeleteIcon,
+    EditIcon,
+    Table,
+    TableAction,
+    Td,
+    getAllData,
+    staticURL,
+} from "@/shared"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
-import { getAllData } from "repository"
+import { TableUserSkeleton } from "./components"
 
 export function Users({}: UsersProps) {
     const column = ["Nom", "Rôles", "Action"]
@@ -10,35 +18,23 @@ export function Users({}: UsersProps) {
         queryKey: ["users"],
         queryFn: () => getAllData<User>("user"),
     })
-    console.log("data");
-    console.log(data);
-    
-    const dataOld: User[] = [
-        {
-            _id: "1",
-            name: "Hart Hagerty",
-            email: "tutoriel.mbl@gmail.com",
-            imageURL: "/images/avatar.png",
-            role: { name: "Super account Manager" } as any,
-        },
-    ]
+
     return (
         <div className="mt-5">
             <div className="w-full">
                 <Table
                     column={column}
-                    data={dataOld}
+                    data={data}
+                    Suspense={TableUserSkeleton}
+                    isLoading={isLoading}
                     displayRow={(user) => (
-                        <>
+                        <tr>
                             <Td>
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
-                                            <Image
-                                                src={user.imageURL}
-                                                width={48}
-                                                height={48}
-                                                alt="Avatar Tailwind CSS Component"
+                                            <img
+                                                src={staticURL(user.imageURL)}
                                             />
                                         </div>
                                     </div>
@@ -71,7 +67,7 @@ export function Users({}: UsersProps) {
                                     </TableAction>
                                 </div>
                             </Td>
-                        </>
+                        </tr>
                     )}
                 />
             </div>

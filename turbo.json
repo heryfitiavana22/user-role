@@ -12,5 +12,5 @@
       "persistent": true
     }
   },
-  "globalEnv": ["NEXT_PUBLIC_BASE_URL"]
+  "globalEnv": ["NEXT_PUBLIC_BASE_URL", "NEXT_PUBLIC_SERVER_URL"]
 }

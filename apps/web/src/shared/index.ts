@@ -1,5 +1,3 @@
-export * from "./sidebar"
-export * from "./icons"
-export * from "./table"
-export * from "./button"
-export { CustomInput } from "./customInput"
+export * from "./components"
+export * from "./repository"
+export * from "./functions"

@@ -3,6 +3,7 @@ import { Schema, model } from "mongoose"
 type IUser = Pick<User, "email" | "imageURL" | "name"> & {
     role: any
 }
+export const defaultUserImg = "/images/user/avatar.png"
 
 const user = new Schema<IUser>({
     name: {
@@ -12,6 +13,10 @@ const user = new Schema<IUser>({
     email: {
         type: String,
         required: true,
+    },
+    imageURL: {
+        type: String,
+        default: defaultUserImg
     },
     role: {
         type: Schema.Types.ObjectId,

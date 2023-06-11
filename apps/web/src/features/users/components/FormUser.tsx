@@ -1,17 +1,31 @@
 "use client"
-import { Button, CustomInput } from "@/shared"
+import { Button, CustomInput, Loading, getOneData } from "@/shared"
 import { useForm } from "react-hook-form"
 import { useUserSubmit } from "../hooks"
+import { useQuery } from "@tanstack/react-query"
+import classNames from "classnames"
+import { Message } from "./Message"
 
-export function FormUser({ type, id }: FormUserProps) {
-    const { register, handleSubmit } = useForm<UserForm>()
-    const { onSubmit } = useUserSubmit(type)
+export function FormUser({ type, id, roles }: FormUserProps) {
+    const { register, handleSubmit, reset } = useForm<UserForm>({
+        defaultValues: { _id: id },
+    })
+    const { data, isLoading } = useQuery({
+        queryKey: ["user"],
+        queryFn: () => getOneData<User>("user", id || ""),
+        enabled: !!id, // activé quand il y a un "id"
+    })
+    const { message, onSubmit } = useUserSubmit(type, reset)
+
+    // ne vérifier que quand il y a un "id"
+    if (!!id && isLoading) return <Loading />
 
     return (
         <form className="mt-3" onSubmit={handleSubmit(onSubmit)}>
             <CustomInput
                 label="Nom :"
                 placeholder="nom"
+                defaultValue={data?.name}
                 register={register}
                 name="name"
                 required
@@ -19,6 +33,7 @@ export function FormUser({ type, id }: FormUserProps) {
             <CustomInput
                 label="Email :"
                 placeholder="email"
+                defaultValue={data?.email}
                 register={register}
                 name="email"
                 required
@@ -29,7 +44,7 @@ export function FormUser({ type, id }: FormUserProps) {
                 </label>
                 <input
                     type="file"
-                    className="file-input file-input-primary file-input-bordered w-full max-w-xs"
+                    className="file-input file-input-primary file:text-white file-input-bordered w-full max-w-xs"
                     {...register("fileList")}
                 />
             </div>
@@ -39,15 +54,21 @@ export function FormUser({ type, id }: FormUserProps) {
                 </label>
                 <select
                     className="select select-bordered"
+                    defaultValue={data?.role.name}
                     {...register("role", { required: true })}
                 >
-                    <option>Super account</option>
-                    <option>Manager</option>
+                    {roles.map((role, k) => (
+                        <option key={k} value={role._id}>
+                            {role.name}
+                        </option>
+                    ))}
                 </select>
             </div>
+
             <Button color={"pirmary"} className="mt-3">
                 {type == "create" ? "Ajouter" : "Modifier"}
             </Button>
+            <Message {...message} />
         </form>
     )
 }
@@ -55,4 +76,5 @@ export function FormUser({ type, id }: FormUserProps) {
 type FormUserProps = {
     type: CreateOrUpdate
     id?: string
+    roles: Role[]
 }

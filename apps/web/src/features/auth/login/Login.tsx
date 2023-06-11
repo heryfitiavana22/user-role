@@ -52,7 +52,7 @@ export function Login({}: LoginProps) {
                     </div>
                     <Link
                         href={"/forgotpassword"}
-                        className="text-sm text-violet-500"
+                        className="text-sm text-primary"
                     >
                         Mot de passe oublié ?
                     </Link>

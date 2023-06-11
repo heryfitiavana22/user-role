@@ -8,7 +8,7 @@ export default function Page({}: PageProps) {
             <div className="flex justify-between">
                 <h3 className="text-xl font-semibold">Les utilisateurs</h3>
                 <Link href="users/add">
-                    <Button color={"secondary"} size={"md"}>
+                    <Button size={"md"}>
                         Ajouter
                     </Button>
                 </Link>

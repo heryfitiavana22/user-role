@@ -14,15 +14,15 @@ module.exports = {
         themes: [
             {
                 mytheme: {
-                    primary: brandColor[500],
-                    secondary: brandColor[400],
+                    primary: brandColor[400],
+                    secondary: brandColor[300],
                     accent: "#37CDBE",
                     neutral: "#3D4451",
                     "base-100": "#FFFFFF",
                     info: "#3ABFF8",
                     success: "#36D399",
                     warning: "#FBBD23",
-                    error: "#F87272",
+                    error: "#FF4B2B",
                 },
             },
         ],

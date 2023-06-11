@@ -4,6 +4,7 @@ import { brandColor, neutral } from "./colors"
 export const { styled, getCssText } = createStitches({
     theme: {
         colors: {
+            brandColor: brandColor[400],
             brandColor50: brandColor[50],
             brandColor100: brandColor[100],
             brandColor200: brandColor[200],

@@ -9,7 +9,7 @@ dotenv.config()
 connectToDatabase()
 
 app.use(cors())
-app.use(express.static("public"))
+app.use("/static",express.static("public"))
 app.use(express.json())
 
 app.get("/", (request, response) => {

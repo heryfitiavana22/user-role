@@ -1,4 +1,4 @@
-import { UserModel } from "./User"
+import { UserModel, defaultUserImg } from "./User"
 
 export class UserService {
     constructor(private User: UserModel) {}
@@ -12,13 +12,13 @@ export class UserService {
     }
 
     add = (user: User) => {
-        const currentRole = new this.User({
+        const current = new this.User({
             email: user.email,
             name: user.name,
-            imageURL: user.imageURL,
+            imageURL: user.imageURL || defaultUserImg,
             role: user.role,
         })
-        return currentRole.save()
+        return current.save()
     }
 
     update = (user: User) => {

@@ -1,5 +1,5 @@
 "use client"
-
+import 'react-loading-skeleton/dist/skeleton.css'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { PropsWithChildren } from "react"
 
