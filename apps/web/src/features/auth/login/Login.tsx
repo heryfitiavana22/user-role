@@ -2,6 +2,7 @@
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { useLogin } from "./hooks"
+import { H3 } from "@/shared"
 
 export type LoginValue = {
     email: string
@@ -14,7 +15,7 @@ export function Login({}: LoginProps) {
 
     return (
         <div>
-            <h3>Login</h3>
+            <H3>Login</H3>
             <form className="grid gap-5" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">

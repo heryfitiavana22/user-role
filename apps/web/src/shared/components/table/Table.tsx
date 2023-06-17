@@ -2,6 +2,7 @@ import React from "react"
 import { Button } from "../button"
 import { ChevronLeft, ChevronRight } from "../icons"
 import { Th } from "./components"
+import "./table.css"
 
 export function Table<T>({
     column,
@@ -16,7 +17,9 @@ export function Table<T>({
                 <thead>
                     <tr>
                         {column.map((c, k) => (
-                            <Th key={k}>{c}</Th>
+                            <Th key={k}>
+                                {c}
+                            </Th>
                         ))}
                     </tr>
                 </thead>

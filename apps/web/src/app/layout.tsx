@@ -12,14 +12,14 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning={true}>
             <head>
                 <style
                     id="stitches"
                     dangerouslySetInnerHTML={{ __html: getCssText() }}
                 />
             </head>
-            <body className={inter.className}>
+            <body className={inter.className}   suppressHydrationWarning={true} >
                 <ReactQuery>
                     <div className="flex w-full p-1 md:min-h-screen flex-wrap md:flex-nowrap overflow-hidden">
                         <Sidebar />

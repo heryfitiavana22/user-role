@@ -3,7 +3,6 @@ import { Button, CustomInput, Loading, getOneData } from "@/shared"
 import { useForm } from "react-hook-form"
 import { useUserSubmit } from "../hooks"
 import { useQuery } from "@tanstack/react-query"
-import classNames from "classnames"
 import { Message } from "./Message"
 
 export function FormUser({ type, id, roles }: FormUserProps) {
@@ -21,7 +20,7 @@ export function FormUser({ type, id, roles }: FormUserProps) {
     if (!!id && isLoading) return <Loading />
 
     return (
-        <form className="mt-3" onSubmit={handleSubmit(onSubmit)}>
+        <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
             <CustomInput
                 label="Nom :"
                 placeholder="nom"

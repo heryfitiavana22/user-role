@@ -1,0 +1,61 @@
+import { Button } from "@/shared"
+import classNames from "classnames"
+import { PropsWithChildren } from "react"
+
+export function RowForm({ children, className }: RowFormProps) {
+    return (
+        <div className={classNames("grid grid-cols-6", className)}>
+            {children}
+        </div>
+    )
+}
+
+export function ItemRowForm({
+    center = false,
+    children,
+    className,
+}: ItemRowFormProps) {
+    return (
+        <div
+            className={classNames(
+                "flex",
+                {
+                    "justify-center items-center": center,
+                },
+                className
+            )}
+        >
+            {children}
+        </div>
+    )
+}
+
+export function Checkbox({}: CheckboxProps) {
+    return (
+        <input
+            type="checkbox"
+            className="checkbox checkbox-primary checked:!text-white"
+        />
+    )
+}
+
+export function FooterFormRole({}: FooterFormRoleProps) {
+    return (
+        <div className="flex justify-end">
+            <Button>Créer</Button>
+        </div>
+    )
+}
+
+type FooterFormRoleProps = PropsWithChildren<{}>
+
+type RowFormProps = PropsWithChildren<{
+    className?: string
+}>
+
+type ItemRowFormProps = PropsWithChildren<{
+    center?: boolean
+    className?: string
+}>
+
+type CheckboxProps = PropsWithChildren<{}>

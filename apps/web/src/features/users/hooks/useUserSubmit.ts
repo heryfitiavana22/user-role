@@ -8,6 +8,7 @@ export function useUserSubmit(
     reset: UseFormReset<UserForm>
 ) {
     const [message, setMessage] = useState({ text: "", success: false })
+
     const onSubmit: SubmitHandler<UserForm> = async (user) => {
         let response: RepositoryResponse<User>
 

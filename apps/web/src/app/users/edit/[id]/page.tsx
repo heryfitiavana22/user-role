@@ -1,13 +1,13 @@
 import { FormUser } from "@/features"
-import { getAllData } from "@/shared"
+import { H3, getAllData } from "@/shared"
 
 export default async function Page({ params }: PageProps) {
     const roles = await getAllData<Role>("role")
-    
+
     return (
         <div>
-            <h3 className="text-xl font-semibold">Modifier l'utilisateur </h3>
-            <FormUser type="update" id={params.id} roles={roles}/>
+            <H3>Modifier l'utilisateur </H3>
+            <FormUser type="update" id={params.id} roles={roles} />
         </div>
     )
 }
