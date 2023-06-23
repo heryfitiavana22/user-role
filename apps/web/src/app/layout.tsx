@@ -1,4 +1,4 @@
-import { Sidebar } from "@/shared"
+import { Loading, Sidebar } from "@/shared"
 import "./global.css"
 import { Inter } from "next/font/google"
 import { getCssText } from "@/config"
@@ -19,12 +19,13 @@ export default function RootLayout({
                     dangerouslySetInnerHTML={{ __html: getCssText() }}
                 />
             </head>
-            <body className={inter.className}   suppressHydrationWarning={true} >
+            <body className={inter.className} suppressHydrationWarning={true}>
                 <ReactQuery>
                     <div className="flex w-full p-1 md:min-h-screen flex-wrap md:flex-nowrap overflow-hidden">
                         <Sidebar />
                         <div className="w-full p-5">{children}</div>
                     </div>
+                    <Loading />
                 </ReactQuery>
             </body>
         </html>

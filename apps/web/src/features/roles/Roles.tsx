@@ -10,8 +10,9 @@ import {
 } from "@/shared"
 import { useQuery } from "@tanstack/react-query"
 import { PropsWithChildren } from "react"
-import { formatRolesAccess } from "./roles.helper"
+import { flatRolesAccess } from "./roles.helper"
 import { TableRoleSkeleton } from "./components"
+import { Routes } from "@/Routes"
 
 export function Roles({}: RolesProps) {
     const column = ["Rôle", "Accès", "action"]
@@ -26,14 +27,17 @@ export function Roles({}: RolesProps) {
                 column={column}
                 Suspense={TableRoleSkeleton}
                 isLoading={isLoading}
-                data={formatRolesAccess(data)}
+                data={flatRolesAccess(data)}
                 displayRow={(role) => (
                     <tr>
                         <Td className="font-bold">{role.name}</Td>
                         <Td>{role.access}</Td>
                         <Td>
                             <div className="flex gap-2">
-                                <TableAction type="edit" href={``}>
+                                <TableAction
+                                    type="edit"
+                                    href={Routes.editRole(role._id)}
+                                >
                                     <EditIcon />
                                 </TableAction>
                                 <TableAction type="delete" href="#">

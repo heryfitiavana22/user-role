@@ -1,9 +1,10 @@
 "use client"
-import { Button, CustomInput, Loading, getOneData } from "@/shared"
+import { Button, CustomInput, Loading, getOneData, useLoading } from "@/shared"
 import { useForm } from "react-hook-form"
 import { useUserSubmit } from "../hooks"
 import { useQuery } from "@tanstack/react-query"
 import { Message } from "./Message"
+import { useEffect } from "react"
 
 export function FormUser({ type, id, roles }: FormUserProps) {
     const { register, handleSubmit, reset } = useForm<UserForm>({
@@ -15,9 +16,16 @@ export function FormUser({ type, id, roles }: FormUserProps) {
         enabled: !!id, // activé quand il y a un "id"
     })
     const { message, onSubmit } = useUserSubmit(type, reset)
+    const { runLoading, stopLoading } = useLoading()
 
-    // ne vérifier que quand il y a un "id"
-    if (!!id && isLoading) return <Loading />
+    useEffect(() => {
+        // ne faire un loading que quand il y a un "id" et isLoading
+        if (!!id && isLoading) {
+            runLoading()
+        }
+        stopLoading()
+    }, [])
+    if (!!id && isLoading) return <></>
 
     return (
         <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>

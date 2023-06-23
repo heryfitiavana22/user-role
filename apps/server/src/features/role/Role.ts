@@ -4,7 +4,7 @@ const role = new Schema<Role>({
     name: String,
     permissions: [
         {
-            resource: String,
+            service: String,
             actions: [String],
         },
     ],
