@@ -6,33 +6,38 @@ import { ItemRowForm, RowForm } from "./RowComponents"
 import { Checkbox } from "./Checkbox"
 import { FooterFormRole } from "./FooterFormRole"
 import { useFormPermissions, useFormSubmit } from "../hooks"
-import { flatRolesAccess, isServiceActionInRolesFlatted } from "../roles.helper"
+import {
+    concatAccess,
+    isServiceActionInPermissionsFlatted,
+} from "../roles.helper"
 import { useQuery } from "@tanstack/react-query"
 
 const crudTitle = ["Ajout", "Lire", "Edition", "Suppression", "Tous"]
 const customCrud: CustomCRUD[] = ["create", "read", "update", "delete", "all"]
 
 export function FormRole({ type, services, id }: FormRoleProps) {
+    const { register, handleSubmit, reset } = useForm<Role>({
+        defaultValues: { _id: id },
+    })
     const { data: currentRole, isLoading } = useQuery({
         queryKey: ["currentRole"],
         queryFn: () => getOneData<Role>("role", id || ""),
         enabled: !!id, // activé quand il y a un id
         cacheTime: 0,
     })
-    const rolesFlatted = flatRolesAccess(
-        currentRole ? [currentRole] : undefined
-    )
-    const { register, handleSubmit } = useForm<Role>({
-        defaultValues: { _id: id },
-    })
     const { permissions, addPermission, removePermission, resetPermission } =
         useFormPermissions(currentRole?.permissions)
+    const permissionFlat = concatAccess({ permissions })
+    const onSuccess = () => {
+        resetPermission()
+        reset()
+    }
     const {
         isClicked,
         message,
         type: resultSubmit,
         onSubmit,
-    } = useFormSubmit(type, resetPermission)
+    } = useFormSubmit(type, onSuccess)
 
     if (!!id && isLoading) return <Loading />
 
@@ -71,10 +76,10 @@ export function FormRole({ type, services, id }: FormRoleProps) {
                                         onUnChecked={() =>
                                             removePermission(service, action)
                                         }
-                                        checked={isServiceActionInRolesFlatted(
+                                        checked={isServiceActionInPermissionsFlatted(
                                             service,
                                             action,
-                                            rolesFlatted
+                                            permissionFlat
                                         )}
                                     />
                                 </ItemRowForm>

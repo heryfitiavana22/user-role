@@ -1,5 +1,7 @@
 import { Request, Response } from "express"
 import { RoleService } from "./role.service"
+import { isCorrectRole, formatActionAll } from "./role.helper"
+import { errorMessage } from "../errorHandler"
 
 export class RoleController {
     constructor(private service: RoleService) {}
@@ -15,13 +17,27 @@ export class RoleController {
     }
 
     add = async (request: Request<{}, {}, Role>, response: Response) => {
-        const newRole = await this.service.add(request.body)
-        response.send(newRole)
+        const isCorrect = isCorrectRole(request.body)
+        if (isCorrect) {
+            const roleFormatted = formatActionAll(request.body)
+            const newRole = await this.service.add(roleFormatted)
+            return response.send(newRole)
+        }
+        response
+            .status(400)
+            .send({ error: errorMessage.actionPermissionInvalid })
     }
 
     update = async (request: Request<{}, {}, Role>, response: Response) => {
-        const updated = await this.service.update(request.body)
-        response.send(updated)
+        const isCorrect = isCorrectRole(request.body)
+        if (isCorrect) {
+            const roleFormatted = formatActionAll(request.body)
+            const updated = await this.service.update(roleFormatted)
+            return response.send(updated)
+        }
+        response
+            .status(400)
+            .send({ error: errorMessage.actionPermissionInvalid })
     }
 
     delete = async (request: Request<{ id: string }>, response: Response) => {

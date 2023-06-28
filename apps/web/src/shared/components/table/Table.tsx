@@ -3,17 +3,19 @@ import { Button } from "../button"
 import { ChevronLeft, ChevronRight } from "../icons"
 import { Th } from "./components"
 import "./table.css"
+import classNames from "classnames"
 
 export function Table<T>({
     column,
     data,
     isLoading = false,
+    className,
     Suspense,
     displayRow,
 }: TableProps<T>) {
     return (
         <div className="overflow-x-auto overflow-y-hidden">
-            <table className="table w-full">
+            <table className={classNames("table w-full", className)}>
                 <thead>
                     <tr>
                         {column.map((c, k) => (
@@ -56,4 +58,5 @@ type TableProps<T> = {
     displayRow: (row: T) => React.ReactNode
     isLoading?: boolean
     Suspense: () => JSX.Element
+    className?: string
 }

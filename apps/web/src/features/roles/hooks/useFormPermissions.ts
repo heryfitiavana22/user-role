@@ -46,8 +46,6 @@ export function useFormPermissions(defaultPermissions?: Permission[]) {
             setPermissions([...otherServices, serviceUpdated])
         },
         resetPermission: () => {
-            // console.log("rest");
-
             setPermissions([])
         },
     }

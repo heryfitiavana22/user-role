@@ -18,6 +18,7 @@ app.get("/", (request, response) => {
 
 app.use(userRouter)
 app.use(roleRouter)
+// app.use(errorHandler)
 
 app.listen(8000, () => {
     console.log("server running at port : 8000")

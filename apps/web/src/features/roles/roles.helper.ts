@@ -11,7 +11,7 @@ export function flatRolesAccess(roles?: Role[]) {
     }) as FlatRole[]
 }
 
-function concatAccess({ permissions }: Permissons) {
+export function concatAccess({ permissions }: Permissons) {
     // concatener le nom de l'acces avec le CRUD qu'il en a
     return permissions
         .map((permission) =>
@@ -24,18 +24,12 @@ function concatAccess({ permissions }: Permissons) {
         .join(", ")
 }
 
-export function isServiceActionInRolesFlatted(
+export function isServiceActionInPermissionsFlatted(
     service: string,
     action: string,
-    rolesFlatted?: FlatRole[]
+    permissions: string
 ) {
-    if (!rolesFlatted) return false
-
-    return (
-        rolesFlatted.filter((role) =>
-            role.access.includes(`${action} ${service.toLowerCase()}`)
-        ).length > 0
-    )
+    return permissions.includes(`${action} ${service.toLowerCase()}`)
 }
 
 type FlatRole = {
