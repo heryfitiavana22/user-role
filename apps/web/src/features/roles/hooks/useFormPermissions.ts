@@ -1,9 +1,14 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export function useFormPermissions(defaultPermissions?: Permission[]) {
     const [permissions, setPermissions] = useState<Permission[]>(
         defaultPermissions ? defaultPermissions : []
     )
+
+    useEffect(() => {
+        if (defaultPermissions)
+            setPermissions((last) => [...last, ...defaultPermissions])
+    }, [defaultPermissions])
 
     return {
         permissions,
@@ -24,6 +29,7 @@ export function useFormPermissions(defaultPermissions?: Permission[]) {
         removePermission: (service: string, action: CustomCRUD) => {
             const { otherServices, serviceInPermission } =
                 filterPermissionsByService(permissions, service)
+
             // si le service n'existe pas
             if (serviceInPermission.length == 0) return
 
@@ -39,6 +45,11 @@ export function useFormPermissions(defaultPermissions?: Permission[]) {
                 return setPermissions([...otherServices])
             setPermissions([...otherServices, serviceUpdated])
         },
+        resetPermission: () => {
+            // console.log("rest");
+
+            setPermissions([])
+        },
     }
 }
 
@@ -47,9 +58,13 @@ function filterPermissionsByService(
     service: string
 ) {
     // rechercher s'il y a déjà le service dans les permissions
-    const serviceInPermission = permissions.filter((p) => p.service == service)
+    const serviceInPermission = permissions.filter(
+        (p) => p.service.toLowerCase() == service.toLowerCase()
+    )
     // enlever les autres services
-    const otherServices = permissions.filter((p) => p.service !== service)
+    const otherServices = permissions.filter(
+        (p) => p.service.toLowerCase() !== service.toLowerCase()
+    )
 
     return {
         serviceInPermission,

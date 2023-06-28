@@ -16,7 +16,7 @@ const user = new Schema<IUser>({
     },
     imageURL: {
         type: String,
-        default: defaultUserImg
+        default: defaultUserImg,
     },
     role: {
         type: Schema.Types.ObjectId,

@@ -24,8 +24,8 @@ export class UserController {
         response.send(data)
     }
 
-    delete = async (request: Request<{ _id: string }>, response: Response) => {
-        const data = await this.service.delete(request.params._id)
+    delete = async (request: Request<{ id: string }>, response: Response) => {
+        const data = await this.service.delete(request.params.id)
         response.send(data)
     }
 }

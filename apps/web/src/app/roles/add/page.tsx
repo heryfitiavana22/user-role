@@ -8,7 +8,7 @@ export default async function Page({}: PageProps) {
     return (
         <div>
             <H3>Ajouter un rôle</H3>
-            <FormRole type="create" services={services}/>
+            <FormRole type="create" services={services} />
         </div>
     )
 }

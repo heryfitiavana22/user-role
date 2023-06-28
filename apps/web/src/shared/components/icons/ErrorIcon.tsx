@@ -19,5 +19,5 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
 )
 
 export const ErrorIcon = styled(SvgComponent, {
-    stroke: "CurrentColor"
+    stroke: "CurrentColor",
 })

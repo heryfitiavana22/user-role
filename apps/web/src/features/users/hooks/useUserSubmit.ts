@@ -1,5 +1,5 @@
 "use client"
-import { createData, createDataOld, updateOneData, useLoading } from "@/shared"
+import { createData, updateOneData } from "@/shared"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import { SubmitHandler, UseFormReset } from "react-hook-form"
@@ -8,14 +8,14 @@ export function useUserSubmit(
     type: CreateOrUpdate,
     reset: UseFormReset<UserForm>
 ) {
-    const [message, setMessage] = useState({ text: "", success: false })
-    const { runLoading, stopLoading } = useLoading()
     const fnSubmitFactory = type == "create" ? createData : updateOneData
+    const [message, setMessage] = useState({ text: "", success: false })
+    const [isClicked, setIsClicked] = useState(false)
     const { mutate } = useMutation<User, Error, User>({
         mutationKey: ["userSubmit"],
         mutationFn: (data) => fnSubmitFactory("user", data),
         onMutate: () => {
-            runLoading()
+            setIsClicked(true)
         },
         onSuccess: (data) => {
             if (type == "create")
@@ -38,15 +38,17 @@ export function useUserSubmit(
             })
         },
         onSettled: () => {
-            stopLoading()
+            setIsClicked(false)
         },
     })
 
     const onSubmit: SubmitHandler<UserForm> = async (user) => {
+        if (isClicked) return
         mutate(user)
     }
 
     return {
+        isClicked,
         message,
         onSubmit,
     }

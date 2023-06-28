@@ -12,19 +12,17 @@ import {
 import { useQuery } from "@tanstack/react-query"
 import { TableUserSkeleton } from "./components"
 import { Routes } from "@/Routes"
+import { useUsers } from "./hooks"
 
 export function Users({}: UsersProps) {
     const column = ["Nom", "Rôles", "Action"]
-    const { data, isLoading } = useQuery({
-        queryKey: ["users"],
-        queryFn: () => getAllData<User>("user"),
-    })
+    const { users, isLoading, onDelete } = useUsers()
 
     return (
         <Wrapper>
             <Table
                 column={column}
-                data={data}
+                data={users}
                 Suspense={TableUserSkeleton}
                 isLoading={isLoading}
                 displayRow={(user) => (
@@ -53,8 +51,10 @@ export function Users({}: UsersProps) {
                                 >
                                     <EditIcon />
                                 </TableAction>
-                                <TableAction type="delete" href="#">
-                                    <DeleteIcon />
+                                <TableAction type="delete">
+                                    <DeleteIcon
+                                        onClick={() => onDelete(user._id)}
+                                    />
                                 </TableAction>
                             </div>
                         </Td>

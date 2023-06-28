@@ -9,9 +9,7 @@ export default function Page({}: PageProps) {
             <div className="flex justify-between">
                 <H3>Les utilisateurs</H3>
                 <Link href={Routes.addUser()}>
-                    <Button size={"md"}>
-                        Ajouter
-                    </Button>
+                    <Button size={"md"}>Ajouter</Button>
                 </Link>
             </div>
             <Users />

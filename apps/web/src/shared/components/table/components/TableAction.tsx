@@ -3,24 +3,37 @@ import classNames from "classnames"
 import Link from "next/link"
 
 export function TableAction({
-
     href,
     children,
     className,
     type,
 }: TableActionProps) {
+    if (href)
+        return (
+            <Link
+                className={classNames(
+                    "tooltip tooltip-bottom cursor-pointer",
+                    colorFactory(type),
+                    className
+                )}
+                data-tip={dataTipFactory(type)}
+                href={href}
+            >
+                {children}
+            </Link>
+        )
+
     return (
-        <Link
+        <div
             className={classNames(
                 "tooltip tooltip-bottom cursor-pointer",
                 colorFactory(type),
                 className
             )}
             data-tip={dataTipFactory(type)}
-            href={href}
         >
             {children}
-        </Link>
+        </div>
     )
 }
 
@@ -38,7 +51,7 @@ function dataTipFactory(type: TableActionType) {
 
 type TableActionProps = PropsWithChildren<{
     className?: string
-    href: string
+    href?: string
     type: TableActionType
 }>
 

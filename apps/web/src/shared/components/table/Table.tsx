@@ -17,9 +17,7 @@ export function Table<T>({
                 <thead>
                     <tr>
                         {column.map((c, k) => (
-                            <Th key={k}>
-                                {c}
-                            </Th>
+                            <Th key={k}>{c}</Th>
                         ))}
                     </tr>
                 </thead>

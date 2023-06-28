@@ -6,20 +6,17 @@ import {
     TableAction,
     Td,
     Wrapper,
-    getAllData,
+    Loading,
 } from "@/shared"
-import { useQuery } from "@tanstack/react-query"
 import { PropsWithChildren } from "react"
 import { flatRolesAccess } from "./roles.helper"
 import { TableRoleSkeleton } from "./components"
 import { Routes } from "@/Routes"
+import { useRoles } from "./hooks"
 
 export function Roles({}: RolesProps) {
     const column = ["Rôle", "Accès", "action"]
-    const { isLoading, data } = useQuery({
-        queryKey: ["roles"],
-        queryFn: () => getAllData<Role>("role"),
-    })
+    const { roles, isLoading, isRemoving, onDelete } = useRoles()
 
     return (
         <Wrapper>
@@ -27,7 +24,7 @@ export function Roles({}: RolesProps) {
                 column={column}
                 Suspense={TableRoleSkeleton}
                 isLoading={isLoading}
-                data={flatRolesAccess(data)}
+                data={flatRolesAccess(roles)}
                 displayRow={(role) => (
                     <tr>
                         <Td className="font-bold">{role.name}</Td>
@@ -40,14 +37,17 @@ export function Roles({}: RolesProps) {
                                 >
                                     <EditIcon />
                                 </TableAction>
-                                <TableAction type="delete" href="#">
-                                    <DeleteIcon />
+                                <TableAction type="delete">
+                                    <DeleteIcon
+                                        onClick={() => onDelete(role._id)}
+                                    />
                                 </TableAction>
                             </div>
                         </Td>
                     </tr>
                 )}
             />
+            {isRemoving && <Loading />}
         </Wrapper>
     )
 }

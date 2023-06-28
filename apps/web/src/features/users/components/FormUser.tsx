@@ -1,10 +1,9 @@
 "use client"
-import { Button, CustomInput, Loading, getOneData, useLoading } from "@/shared"
+import { Button, CustomInput, Loading, getOneData } from "@/shared"
 import { useForm } from "react-hook-form"
 import { useUserSubmit } from "../hooks"
 import { useQuery } from "@tanstack/react-query"
 import { Message } from "./Message"
-import { useEffect } from "react"
 
 export function FormUser({ type, id, roles }: FormUserProps) {
     const { register, handleSubmit, reset } = useForm<UserForm>({
@@ -13,19 +12,12 @@ export function FormUser({ type, id, roles }: FormUserProps) {
     const { data, isLoading } = useQuery({
         queryKey: ["user"],
         queryFn: () => getOneData<User>("user", id || ""),
-        enabled: !!id, // activé quand il y a un "id"
+        enabled: !!id, // activé quand il y a un "id",
+        cacheTime: 0,
     })
-    const { message, onSubmit } = useUserSubmit(type, reset)
-    const { runLoading, stopLoading } = useLoading()
+    const { message, isClicked, onSubmit } = useUserSubmit(type, reset)
 
-    useEffect(() => {
-        // ne faire un loading que quand il y a un "id" et isLoading
-        if (!!id && isLoading) {
-            runLoading()
-        }
-        stopLoading()
-    }, [])
-    if (!!id && isLoading) return <></>
+    if (!!id && isLoading) return <Loading />
 
     return (
         <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
@@ -72,10 +64,11 @@ export function FormUser({ type, id, roles }: FormUserProps) {
                 </select>
             </div>
 
-            <Button color={"pirmary"} className="mt-3">
+            <Button color={"pirmary"} className="mt-3" disabled={isClicked}>
                 {type == "create" ? "Ajouter" : "Modifier"}
             </Button>
             <Message {...message} />
+            {isClicked && <Loading />}
         </form>
     )
 }

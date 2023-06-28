@@ -3,7 +3,7 @@ import { H3, getAllData } from "@/shared"
 
 export default async function Page({}: PageProps) {
     const roles = await getAllData<Role>("role")
-    
+
     return (
         <div>
             <H3>Ajouter un utilisateur</H3>
