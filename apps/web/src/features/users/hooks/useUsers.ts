@@ -6,9 +6,9 @@ export function useUsers() {
     const { data, isLoading } = useQuery({
         queryKey: ["users"],
         queryFn: () => getAllData<User>("user"),
-        initialData: [],
     })
-    const [users, setUsers] = useState(data)
+    const dataState = data || []
+    const [users, setUsers] = useState(dataState)
     const { mutate } = useMutation<User, Error, string>({
         mutationKey: ["useusers"],
         mutationFn: (idUser) => deleteOneData("user", idUser),

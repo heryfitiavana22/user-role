@@ -6,9 +6,9 @@ export function useRoles() {
     const { isLoading, data } = useQuery({
         queryKey: ["roles"],
         queryFn: () => getAllData<Role>("role"),
-        initialData: [],
     })
-    const [roles, setRoles] = useState(data)
+    const dataState = data || []
+    const [roles, setRoles] = useState(dataState)
     const [isRemoving, setIsRemoving] = useState(false)
     const { mutate } = useMutation<Role, Error, string>({
         mutationKey: ["deleterole"],
