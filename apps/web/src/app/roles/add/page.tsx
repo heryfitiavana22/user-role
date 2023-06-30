@@ -1,8 +1,7 @@
 import { FormRole } from "@/features"
 import { H3 } from "@/shared"
-import { PropsWithChildren } from "react"
 
-export default async function Page({}: PageProps) {
+export default function Page({}: PageProps) {
     const services = ["Newsletter", "Post", "Forum"]
 
     return (
@@ -13,4 +12,4 @@ export default async function Page({}: PageProps) {
     )
 }
 
-type PageProps = PropsWithChildren<{}>
+type PageProps = {}

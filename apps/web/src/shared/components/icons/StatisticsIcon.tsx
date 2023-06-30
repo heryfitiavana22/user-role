@@ -1,8 +1,8 @@
-import { styled } from "@stitches/react"
 import classNames from "classnames"
 import { SVGProps } from "react"
+import { strokeCurrent } from "./icon.css"
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
+export const StatisticsIcon = (props: SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24}>
         <defs>
             <style>
@@ -18,14 +18,14 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
                 strokeLinejoin: "round",
                 strokeWidth: 1.5,
             }}
-            className={props.className}
+            className={strokeCurrent}
         />
         <rect
             width={3}
             height={6}
             x={6}
             y={12}
-            className={classNames("b", props.className)}
+            className={classNames("b", strokeCurrent)}
             rx={1.5}
         />
         <rect
@@ -33,7 +33,7 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
             height={6}
             x={12}
             y={7}
-            className={classNames("b", props.className)}
+            className={classNames("b", strokeCurrent)}
             rx={1.5}
         />
         <rect
@@ -41,11 +41,8 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
             height={6}
             x={18}
             y={3}
-            className={classNames("b", props.className)}
+            className={classNames("b", strokeCurrent)}
             rx={1.5}
         />
     </svg>
 )
-export const StatisticsIcon = styled(SvgComponent, {
-    stroke: "CurrentColor",
-})

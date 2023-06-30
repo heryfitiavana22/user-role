@@ -1,11 +1,22 @@
-import { styled } from "@/config"
+import { ComponentProps } from "react"
+import { td, th } from "./tableComponent.css"
+import classNames from "classnames"
 
-export const Th = styled("th", {
-    backgroundColor: "$brandColor100",
-    position: "static !important",
-    color: "$neutral900",
-})
+export function Th(props: ThProps) {
+    return (
+        <th {...props} className={classNames(th, props.className)}>
+            {props.children}
+        </th>
+    )
+}
 
-export const Td = styled("td", {
-    backgroundColor: "$neutral100",
-})
+export function Td(props: TdProps) {
+    return (
+        <td {...props} className={classNames(td, props.className)}>
+            {props.children}
+        </td>
+    )
+}
+
+type TdProps = ComponentProps<"td">
+type ThProps = ComponentProps<"th">

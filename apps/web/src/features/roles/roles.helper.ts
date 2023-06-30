@@ -12,7 +12,7 @@ export function flatRolesAccess(roles?: Role[]) {
 }
 
 export function concatAccess({ permissions }: Permissons) {
-    // concatener le nom de l'acces avec le CRUD qu'il en a
+    // concatener le nom de l'acces avec chaque CRUD qu'il en a
     return permissions
         .map((permission) =>
             permission.actions

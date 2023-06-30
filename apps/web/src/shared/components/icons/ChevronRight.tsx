@@ -1,7 +1,7 @@
-import { styled } from "@/config"
 import { SVGProps } from "react"
+import { strokeCurrent } from "./icon.css"
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
+export const ChevronRight = (props: SVGProps<SVGSVGElement>) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={24}
@@ -15,11 +15,9 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
             strokeLinejoin="round"
             strokeWidth={2}
             d="M10 8L14 12L10 16"
-            className={props.className}
+            className={strokeCurrent}
         />
     </svg>
 )
 
-export const ChevronRight = styled(SvgComponent, {
-    stroke: "CurrentColor",
-})
+

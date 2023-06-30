@@ -6,7 +6,7 @@ export default async function Page({ params }: PageProps) {
 
     return (
         <div>
-            <H3>Modifier l'utilisateur </H3>
+            <H3>{"Modifier l'utilisateur"} </H3>
             <FormUser type="update" id={params.id} roles={roles} />
         </div>
     )

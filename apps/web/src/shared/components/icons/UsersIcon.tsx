@@ -1,14 +1,14 @@
-import { styled } from "@stitches/react"
 import { SVGProps } from "react"
+import { fillCurrent } from "./icon.css"
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
+export const UsersIcon = (props: SVGProps<SVGSVGElement>) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24px"
         height="24px"
         fill="none"
     >
-        <g fill="#000" clipPath="url(#a)" {...props}>
+        <g fill="#000" clipPath="url(#a)" {...props} className={fillCurrent}>
             <path
                 fillRule="evenodd"
                 d="M9 0a5.5 5.5 0 1 0 0 11A5.5 5.5 0 0 0 9 0ZM5.5 5.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0Z"
@@ -23,7 +23,3 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
         </defs>
     </svg>
 )
-
-export const UsersIcon = styled(SvgComponent, {
-    fill: "CurrentColor",
-})
