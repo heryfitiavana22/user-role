@@ -12,4 +12,8 @@ export default function Page({}: PageProps) {
     )
 }
 
+export const metadata = {
+    title: "Ajouter un rôle",
+}
+
 type PageProps = {}

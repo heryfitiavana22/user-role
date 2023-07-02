@@ -28,7 +28,11 @@ export function Roles({}: RolesProps) {
                 displayRow={(role) => (
                     <tr>
                         <Td className="font-bold">{role.name}</Td>
-                        <Td>{role.access}</Td>
+                        <Td className="w-4/5">
+                            <div className="h-10 overflow-hidden text-ellipsis">
+                                {role.access}
+                            </div>
+                        </Td>
                         <Td>
                             <div className="flex gap-2">
                                 <TableAction

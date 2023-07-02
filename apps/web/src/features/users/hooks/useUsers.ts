@@ -9,18 +9,23 @@ export function useUsers() {
     })
     const dataState = data || []
     const [users, setUsers] = useState(dataState)
+    const [isRemoving, setIsRemoving] = useState(false)
     const { mutate } = useMutation<User, Error, string>({
         mutationKey: ["useusers"],
         mutationFn: (idUser) => deleteOneData("user", idUser),
+        onMutate () {
+            setIsRemoving(true)
+        },
         onSuccess(user) {
-            console.log("suces")
-
             const usersFiltered = users.filter((u) => u._id !== user._id)
             setUsers(usersFiltered)
         },
         onError: (error) => {
             console.log(error)
         },
+        onSettled() {
+            setIsRemoving(false)
+        }
     })
 
     useEffect(() => {
@@ -30,6 +35,7 @@ export function useUsers() {
     return {
         users,
         isLoading,
+        isRemoving,
         onDelete: (_id: string) => {
             mutate(_id)
         },

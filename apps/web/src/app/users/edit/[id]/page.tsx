@@ -12,6 +12,10 @@ export default async function Page({ params }: PageProps) {
     )
 }
 
+export const metadata = {
+    title: "Modifier un utilisateur",
+}
+
 type PageProps = {
     params: {
         id: string

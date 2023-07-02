@@ -39,14 +39,14 @@ export function Sidebar({}: SidebarProps) {
                             </IconWrapper>
                             <IconWrapper
                                 name="Utilisateurs"
-                                href="users"
+                                href="/users"
                                 isActive={pathname.includes("/users")}
                             >
                                 <UsersIcon />
                             </IconWrapper>
                             <IconWrapper
                                 name="Rôles"
-                                href="roles"
+                                href="/roles"
                                 isActive={pathname.includes("/role")}
                             >
                                 <RoleIcon />

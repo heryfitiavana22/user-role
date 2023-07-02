@@ -12,4 +12,8 @@ export default async function Page({}: PageProps) {
     )
 }
 
+export const metadata = {
+    title: "Ajouter un utilisateur",
+}
+
 type PageProps = {}

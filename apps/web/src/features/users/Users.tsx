@@ -2,14 +2,13 @@
 import {
     DeleteIcon,
     EditIcon,
+    Loading,
     Table,
     TableAction,
     Td,
     Wrapper,
-    getAllData,
     staticURL,
 } from "@/shared"
-import { useQuery } from "@tanstack/react-query"
 import { TableUserSkeleton } from "./components"
 import { Routes } from "@/Routes"
 import { useUsers } from "./hooks"
@@ -17,7 +16,7 @@ import Image from "next/image"
 
 export function Users({}: UsersProps) {
     const column = ["Nom", "Rôles", "Action"]
-    const { users, isLoading, onDelete } = useUsers()
+    const { users, isLoading, isRemoving, onDelete } = useUsers()
 
     return (
         <Wrapper>
@@ -67,6 +66,7 @@ export function Users({}: UsersProps) {
                     </tr>
                 )}
             />
+            {isRemoving && <Loading />}
         </Wrapper>
     )
 }

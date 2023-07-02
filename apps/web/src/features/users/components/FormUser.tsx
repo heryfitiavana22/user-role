@@ -18,6 +18,8 @@ export function FormUser({ type, id, roles }: FormUserProps) {
     const { message, isClicked, onSubmit } = useUserSubmit(type, reset)
 
     if (!!id && isLoading) return <Loading />
+    console.log(data);
+    
 
     return (
         <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +55,7 @@ export function FormUser({ type, id, roles }: FormUserProps) {
                 </label>
                 <select
                     className="select select-bordered"
-                    defaultValue={data?.role.name}
+                    defaultValue={data?.role._id}
                     {...register("role", { required: true })}
                 >
                     {roles.map((role, k) => (
@@ -64,7 +66,7 @@ export function FormUser({ type, id, roles }: FormUserProps) {
                 </select>
             </div>
 
-            <Button color={"pirmary"} className="mt-3" disabled={isClicked}>
+            <Button color={"primary"} className="mt-3" disabled={isClicked}>
                 {type == "create" ? "Ajouter" : "Modifier"}
             </Button>
             <Message {...message} />

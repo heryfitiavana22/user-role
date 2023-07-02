@@ -12,6 +12,10 @@ export default function Page({ params }: PageProps) {
     )
 }
 
+export const metadata = {
+    title: "Modifier un rôle",
+}
+
 type PageProps = {
     params: {
         id: string

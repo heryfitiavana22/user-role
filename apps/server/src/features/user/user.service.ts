@@ -8,7 +8,7 @@ export class UserService {
     }
 
     findOne = (_id: string) => {
-        return this.User.findById(_id).exec()
+        return this.User.findById(_id).populate<{ role: Role }>("role").exec()
     }
 
     add = (user: User) => {
