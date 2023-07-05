@@ -11,6 +11,8 @@ import {
 import { IconWrapper, PersonConnected } from "./components"
 import classNames from "classnames"
 import { usePathname } from "next/navigation"
+import { Routes } from "@/Routes"
+import { ItemsSidebar } from "./ItemsSidebar"
 
 export function Sidebar({}: SidebarProps) {
     const [isOpen, setIsOpen] = useState(false)
@@ -30,34 +32,16 @@ export function Sidebar({}: SidebarProps) {
                         )}
                     >
                         <div className="flex flex-col items-baseline md:block">
-                            <IconWrapper
-                                name="Dashboard"
-                                href="/"
-                                isActive={pathname === "/"}
-                            >
-                                <DashboardIcon />
-                            </IconWrapper>
-                            <IconWrapper
-                                name="Utilisateurs"
-                                href="/users"
-                                isActive={pathname.includes("/users")}
-                            >
-                                <UsersIcon />
-                            </IconWrapper>
-                            <IconWrapper
-                                name="Rôles"
-                                href="/roles"
-                                isActive={pathname.includes("/role")}
-                            >
-                                <RoleIcon />
-                            </IconWrapper>
-                            <IconWrapper
-                                name="Statistiques"
-                                href="/statistics"
-                                isActive={pathname.includes("/statistics")}
-                            >
-                                <StatisticsIcon />
-                            </IconWrapper>
+                            {ItemsSidebar.map((item, k) => (
+                                <IconWrapper
+                                    name={item.name}
+                                    href={item.link}
+                                    isActive={pathname.includes(item.link)}
+                                    key={k}
+                                >
+                                    <item.Icon />
+                                </IconWrapper>
+                            ))}
                         </div>
                         <div
                             className="absolute top-4 right-4 text-slate-600 md:hidden"

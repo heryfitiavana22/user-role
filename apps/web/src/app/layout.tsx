@@ -1,9 +1,9 @@
-import { Sidebar } from "@/shared"
 import "./global.css"
 import { Poppins } from "next/font/google"
 import { ReactQuery } from "./ReactQuery"
+import { SuperTokens } from "./SuperTokens"
 
-const font = Poppins({ weight: "400", subsets: ["latin"] })
+const font = Poppins({ weight: "400", subsets: ["latin"], fallback: ["arial"] })
 
 export default function RootLayout({
     children,
@@ -14,12 +14,9 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning={true}>
             <head></head>
             <body className={font.className} suppressHydrationWarning={true}>
-                <ReactQuery>
-                    <div className="flex w-full p-1 md:min-h-screen flex-wrap md:flex-nowrap overflow-hidden">
-                        <Sidebar />
-                        <div className="w-full p-5">{children}</div>
-                    </div>
-                </ReactQuery>
+                {/* <SuperTokens> */}
+                    <ReactQuery>{children}</ReactQuery>
+                {/* </SuperTokens> */}
             </body>
         </html>
     )

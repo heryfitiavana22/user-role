@@ -1,7 +1,7 @@
 export const metadata = {
-    title: "Dashboard",
+    title: "User Role",
 }
 
 export default async function Page() {
-    return <main>Dashboard</main>
+    return <main>User role</main>
 }
