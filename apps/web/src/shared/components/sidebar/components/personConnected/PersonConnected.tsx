@@ -2,14 +2,17 @@
 import Image from "next/image"
 import { UserOption } from "./components"
 import { LogOutIcon, SettingsIcon } from "@/shared/components/icons"
+import { staticImageURL, useUserConnected } from "@/shared"
 
 export function PersonConnected({}: PersonConnectedProps) {
+    const user = useUserConnected()
+
     return (
         <div className="flex justify-center bg-transparent">
             <div className="dropdown dropdown-right dropdown-end">
                 <label tabIndex={0}>
                     <Image
-                        src="/images/avatar.png"
+                        src={staticImageURL(user.imageURL)}
                         width={48}
                         height={48}
                         className="w-12 h-12 rounded-lg cursor-pointer"

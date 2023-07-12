@@ -3,6 +3,7 @@ import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { useLogin } from "./hooks"
 import { H3 } from "@/shared"
+import { useSession } from "next-auth/react"
 
 export type LoginValue = {
     email: string

@@ -1,5 +1,5 @@
 import classNames from "classnames"
-import { ComponentProps, PropsWithChildren } from "react"
+import { ComponentProps } from "react"
 import { base, btnColor, btnSize } from "./button.css"
 
 export function Button({

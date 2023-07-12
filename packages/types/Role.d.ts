@@ -10,3 +10,5 @@ declare type Permission = {
 }
 
 declare type CustomCRUD = "create" | "read" | "update" | "delete" | "all"
+
+declare type RoleKeys = keyof Role

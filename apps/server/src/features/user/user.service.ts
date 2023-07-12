@@ -7,8 +7,20 @@ export class UserService {
         return this.User.find().populate<{ role: Role }>("role").exec()
     }
 
-    findOne = (_id: string) => {
+    findAllBy = (by: UserKeys, value: string) => {
+        return this.User.find({ [by]: value })
+            .populate<{ role: Role }>("role")
+            .exec()
+    }
+
+    findOneById = (_id: string) => {
         return this.User.findById(_id).populate<{ role: Role }>("role").exec()
+    }
+
+    findOneByEmail = (email: string) => {
+        return this.User.findOne({ email })
+            .populate<{ role: Role }>("role")
+            .exec()
     }
 
     add = (user: User) => {
@@ -21,13 +33,13 @@ export class UserService {
         return current.save()
     }
 
-    update = (user: User) => {
+    updateOneById = (user: User) => {
         return this.User.findOneAndUpdate({ _id: user._id }, user, {
             new: true,
         }).exec()
     }
 
-    delete = (_id: string) => {
+    deleteOneById = (_id: string) => {
         return this.User.findOneAndDelete({ _id }).exec()
     }
 }

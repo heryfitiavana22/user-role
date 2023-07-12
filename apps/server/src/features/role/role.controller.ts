@@ -11,37 +11,55 @@ export class RoleController {
         response.send(roles)
     }
 
-    getOne = async (request: Request<{ id: string }>, response: Response) => {
-        const role = await this.service.findOne(request.params.id)
+    getAllBy = async (
+        request: Request<KeyValue<RoleKeys>>,
+        response: Response
+    ) => {
+        const { key, value } = request.params
+        const data = await this.service.findAllBy(key, value)
+        response.send(data)
+    }
+
+    getOneById = async (
+        request: Request<{ id: string }>,
+        response: Response
+    ) => {
+        const role = await this.service.findOneById(request.params.id)
         response.send(role)
     }
 
     add = async (request: Request<{}, {}, Role>, response: Response) => {
         const isCorrect = isCorrectRole(request.body)
-        if (isCorrect) {
-            const roleFormatted = formatActionAll(request.body)
-            const newRole = await this.service.add(roleFormatted)
-            return response.send(newRole)
-        }
-        response
-            .status(400)
-            .send({ error: errorMessage.actionPermissionInvalid })
+        if (!isCorrect)
+            return response
+                .status(400)
+                .send({ error: errorMessage.actionPermissionInvalid })
+
+        const roleFormatted = formatActionAll(request.body)
+        const newRole = await this.service.add(roleFormatted)
+        response.send(newRole)
     }
 
-    update = async (request: Request<{}, {}, Role>, response: Response) => {
+    updateOneById = async (
+        request: Request<{}, {}, Role>,
+        response: Response
+    ) => {
         const isCorrect = isCorrectRole(request.body)
-        if (isCorrect) {
-            const roleFormatted = formatActionAll(request.body)
-            const updated = await this.service.update(roleFormatted)
-            return response.send(updated)
-        }
-        response
-            .status(400)
-            .send({ error: errorMessage.actionPermissionInvalid })
+        if (!isCorrect)
+            return response
+                .status(400)
+                .send({ error: errorMessage.actionPermissionInvalid })
+
+        const roleFormatted = formatActionAll(request.body)
+        const updated = await this.service.updateOneById(roleFormatted)
+        response.send(updated)
     }
 
-    delete = async (request: Request<{ id: string }>, response: Response) => {
-        const deleted = await this.service.delete(request.params.id)
+    deleteOneById = async (
+        request: Request<{ id: string }>,
+        response: Response
+    ) => {
+        const deleted = await this.service.deleteOneById(request.params.id)
         response.send(deleted)
     }
 }

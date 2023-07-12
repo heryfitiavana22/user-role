@@ -1,7 +1,7 @@
 import "./global.css"
 import { Poppins } from "next/font/google"
 import { ReactQuery } from "./ReactQuery"
-import { SuperTokens } from "./SuperTokens"
+import { NextAuth } from "./NextAuth"
 
 const font = Poppins({ weight: "400", subsets: ["latin"], fallback: ["arial"] })
 
@@ -14,9 +14,9 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning={true}>
             <head></head>
             <body className={font.className} suppressHydrationWarning={true}>
-                {/* <SuperTokens> */}
+                <NextAuth>
                     <ReactQuery>{children}</ReactQuery>
-                {/* </SuperTokens> */}
+                </NextAuth>
             </body>
         </html>
     )

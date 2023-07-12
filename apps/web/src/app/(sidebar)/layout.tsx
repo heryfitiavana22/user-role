@@ -1,7 +1,9 @@
-import { Sidebar } from "@/shared"
+import { Sidebar, checkIfNotConnected } from "@/shared"
 import { PropsWithChildren } from "react"
 
-export default function Layout({ children }: LayoutProps) {
+export default async function Layout({ children }: LayoutProps) {
+    await checkIfNotConnected()
+
     return (
         <div className="flex w-full p-1 md:min-h-screen flex-wrap md:flex-nowrap overflow-hidden">
             <Sidebar />

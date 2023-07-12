@@ -5,3 +5,5 @@ declare interface User {
     role: Role
     imageURL: string
 }
+
+declare type UserKeys = keyof User

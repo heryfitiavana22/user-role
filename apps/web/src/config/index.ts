@@ -1,2 +1,2 @@
 export * from "./colors"
-export * from "./supertokens"
+export * from "./authOptions"

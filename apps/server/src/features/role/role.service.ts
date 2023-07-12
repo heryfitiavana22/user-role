@@ -7,7 +7,11 @@ export class RoleService {
         return this.Role.find().exec()
     }
 
-    findOne = (_id: string) => {
+    findAllBy = (by: RoleKeys, value: string) => {
+        return this.Role.find({ [by]: value }).exec()
+    }
+
+    findOneById = (_id: string) => {
         return this.Role.findById(_id).exec()
     }
 
@@ -19,13 +23,13 @@ export class RoleService {
         return currentRole.save()
     }
 
-    update = (role: Role) => {
+    updateOneById = (role: Role) => {
         return this.Role.findOneAndUpdate({ _id: role._id }, role, {
             new: true,
         }).exec()
     }
 
-    delete = (_id: string) => {
+    deleteOneById = (_id: string) => {
         return this.Role.findOneAndDelete({ _id }).exec()
     }
 }

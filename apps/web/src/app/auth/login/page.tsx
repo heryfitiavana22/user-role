@@ -1,7 +1,9 @@
 import { Login } from "@/features"
-import { H1 } from "@/shared"
+import { H1, checkIfConnected } from "@/shared"
 
 export default async function Page({}: PageProps) {
+    await checkIfConnected()
+
     return (
         <div className="grid w-full min-h-screen md:grid-cols-2">
             <div className="p-5 bg-primary text-slate-200 hidden md:block">

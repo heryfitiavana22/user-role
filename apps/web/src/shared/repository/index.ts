@@ -1,5 +1,5 @@
 export * from "./createData"
 export * from "./deleteOneData"
-export * from "./getAllData"
-export * from "./getOneData"
+export * from "./getData"
 export * from "./updateOneData"
+export { withServerURL } from "./utils"
