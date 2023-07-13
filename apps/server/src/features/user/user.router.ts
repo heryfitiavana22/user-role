@@ -13,6 +13,7 @@ const userURL = apiURL.user
 router.get(userURL, userController.getAll)
 router.get(userURL + KeyValue, userController.getAllBy)
 router.get(userURL + "/:id", userController.getOneById)
+router.post(userURL + "/iscorrect", userController.isUserCorrect)
 router.post(userURL, userController.add)
 router.put(userURL, userController.updateOneById)
 router.delete(`${userURL}/:id`, userController.deleteOneById)

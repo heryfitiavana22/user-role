@@ -4,6 +4,7 @@ declare interface User {
     email: string
     role: Role
     imageURL: string
+    password: string
 }
 
 declare type UserKeys = keyof User

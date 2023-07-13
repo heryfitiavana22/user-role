@@ -1,23 +1,14 @@
-import classNames from "classnames"
+import { Alert } from "@/shared"
 
-export function Message({ success, text }: MessageProps) {
+export function Message({ text, type = "default" }: MessageProps) {
     return (
-        <>
-            {text && (
-                <p
-                    className={classNames(
-                        "my-3 transition-all",
-                        success ? "text-success" : "text-error"
-                    )}
-                >
-                    {text}
-                </p>
-            )}
-        </>
+        <div className="w-fit mt-3">
+            <Alert type={type}>{text}</Alert>
+        </div>
     )
 }
 
 type MessageProps = {
-    success: boolean
     text: string
+    type?: Alert
 }

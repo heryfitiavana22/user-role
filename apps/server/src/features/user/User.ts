@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose"
 
-type IUser = Pick<User, "email" | "imageURL" | "name"> & {
+type IUser = Pick<User, "email" | "imageURL" | "name" | "password"> & {
     role: any
 }
 export const defaultUserImg = "/images/user/avatar.png"
@@ -21,6 +21,10 @@ const user = new Schema<IUser>({
     role: {
         type: Schema.Types.ObjectId,
         ref: "Role",
+    },
+    password: {
+        type: String,
+        required: true,
     },
 })
 

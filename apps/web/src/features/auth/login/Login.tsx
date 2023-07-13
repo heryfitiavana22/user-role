@@ -2,8 +2,7 @@
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { useLogin } from "./hooks"
-import { H3 } from "@/shared"
-import { useSession } from "next-auth/react"
+import { Button, H3, Loading } from "@/shared"
 
 export type LoginValue = {
     email: string
@@ -12,7 +11,7 @@ export type LoginValue = {
 
 export function Login({}: LoginProps) {
     const { register, handleSubmit } = useForm<LoginValue>()
-    const { onSubmit } = useLogin()
+    const { message, loading, onSubmit } = useLogin()
 
     return (
         <div>
@@ -23,7 +22,7 @@ export function Login({}: LoginProps) {
                         <span className="label-text">Email :</span>
                     </label>
                     <input
-                        type="text"
+                        type="email"
                         placeholder="adresse email"
                         className="input bg-gray-100 w-full max-w-xs"
                         {...register("email")}
@@ -59,10 +58,18 @@ export function Login({}: LoginProps) {
                         Mot de passe oublié ?
                     </Link>
                 </div>
-                <button className="btn btn-primary w-full normal-case hover:bg-violet-600">
+                <Button
+                    className="btn w-full normal-case"
+                    size="lg"
+                    disabled={loading}
+                >
                     Se connecter
-                </button>
+                </Button>
+                {message && (
+                    <p className="text-red-500 text-center">{message}</p>
+                )}
             </form>
+            {loading && <Loading />}
         </div>
     )
 }

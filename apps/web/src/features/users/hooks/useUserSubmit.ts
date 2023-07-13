@@ -9,7 +9,10 @@ export function useUserSubmit(
     reset: UseFormReset<UserForm>
 ) {
     const fnSubmitFactory = type == "create" ? createData : updateOneData
-    const [message, setMessage] = useState({ text: "", success: false })
+    const [message, setMessage] = useState({
+        text: "",
+        type: "default" as Alert,
+    })
     const [isClicked, setIsClicked] = useState(false)
     const { mutate } = useMutation<User, Error, User>({
         mutationKey: ["userSubmit"],
@@ -27,14 +30,16 @@ export function useUserSubmit(
                 })
 
             return setMessage({
-                success: true,
                 text: `Utilisateur ${type == "create" ? "crée" : "mis à jour"}`,
+                type: "success",
             })
         },
-        onError: () => {
+        onError: (error) => {
             setMessage({
-                success: false,
-                text: `Erreur`,
+                text: `Erreur lors de la ${
+                    type == "create" ? "création" : "mise à jour"
+                } de l'utilisateur`,
+                type: "error",
             })
         },
         onSettled: () => {

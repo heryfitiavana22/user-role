@@ -18,8 +18,6 @@ export function FormUser({ type, id, roles }: FormUserProps) {
     const { message, isClicked, onSubmit } = useUserSubmit(type, reset)
 
     if (!!id && isLoading) return <Loading />
-    console.log(data);
-    
 
     return (
         <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>

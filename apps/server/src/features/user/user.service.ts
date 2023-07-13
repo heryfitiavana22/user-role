@@ -1,4 +1,6 @@
+import { saltRound } from "../../config"
 import { UserModel, defaultUserImg } from "./User"
+import * as bcrypt from "bcrypt"
 
 export class UserService {
     constructor(private User: UserModel) {}
@@ -24,11 +26,13 @@ export class UserService {
     }
 
     add = (user: User) => {
+        const password = bcrypt.hashSync(user.password, saltRound)
         const current = new this.User({
             email: user.email,
             name: user.name,
             imageURL: user.imageURL || defaultUserImg,
             role: user.role,
+            password,
         })
         return current.save()
     }
