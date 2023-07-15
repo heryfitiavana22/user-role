@@ -17,4 +17,3 @@ export const ErrorIcon = (props: SVGProps<SVGSVGElement>) => (
         />
     </svg>
 )
-

@@ -1,4 +1,4 @@
 declare type KeyValue<T> = {
-    key: T,
+    key: T
     value: string
 }

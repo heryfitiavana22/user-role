@@ -6,7 +6,6 @@ import { connectToDatabase } from "./config"
 // import * as bcrytp  from "bcrypt"
 // console.log(bcrytp.hashSync("superadmin", 8));
 
-
 const app = express()
 dotenv.config()
 connectToDatabase()

@@ -17,5 +17,3 @@ export const CloseIcon = (props: SVGProps<SVGSVGElement>) => (
         />
     </svg>
 )
-
-

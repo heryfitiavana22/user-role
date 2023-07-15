@@ -1,4 +1,3 @@
-
 export default function Page({}: PageProps) {
     return <>Post</>
 }
@@ -6,6 +5,5 @@ export default function Page({}: PageProps) {
 export const metadata = {
     title: "Post",
 }
-
 
 type PageProps = {}

@@ -13,7 +13,7 @@ export function useUsers() {
     const { mutate } = useMutation<User, Error, string>({
         mutationKey: ["useusers"],
         mutationFn: (idUser) => deleteOneData("user", idUser),
-        onMutate () {
+        onMutate() {
             setIsRemoving(true)
         },
         onSuccess(user) {
@@ -25,7 +25,7 @@ export function useUsers() {
         },
         onSettled() {
             setIsRemoving(false)
-        }
+        },
     })
 
     useEffect(() => {

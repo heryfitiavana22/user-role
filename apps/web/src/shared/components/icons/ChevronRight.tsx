@@ -19,5 +19,3 @@ export const ChevronRight = (props: SVGProps<SVGSVGElement>) => (
         />
     </svg>
 )
-
-

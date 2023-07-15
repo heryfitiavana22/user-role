@@ -23,7 +23,8 @@ export function useLogin() {
             password: data.password,
         })
         setLoading(false)
-        if(result && result.error) return setMessage("Email ou mot de passe invalide")
+        if (result && result.error)
+            return setMessage("Email ou mot de passe invalide")
 
         router.push(Routes.dashboard())
     }

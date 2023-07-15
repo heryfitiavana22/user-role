@@ -8,7 +8,7 @@ export const Routes = {
     editRole: (id: string) => `roles/edit/${id}`,
     addRole: () => `roles/add`,
     statistics: () => "/statistics",
-    forum: () => '/forum',
+    forum: () => "/forum",
     post: () => "/post",
-    newsletter: () => "/newsletter"
+    newsletter: () => "/newsletter",
 } as const
