@@ -1,11 +1,14 @@
 "use client"
-import { Loading, Table, Wrapper } from "@/shared"
+import { Loading, Table, Wrapper, useUserConnected } from "@/shared"
 import { TableRow, TableUserSkeleton } from "./components"
 import { useUsers } from "./hooks"
 
 export function Users({}: UsersProps) {
     const column = ["Nom", "Rôles", "Action"]
-    const { users, isLoading, isRemoving, onDelete } = useUsers()
+    const { Can, ability } = useUserConnected()
+    const { users, isLoading, isRemoving, onDelete } = useUsers(
+        // ability.can("read", "users")
+    )
 
     return (
         <Wrapper>

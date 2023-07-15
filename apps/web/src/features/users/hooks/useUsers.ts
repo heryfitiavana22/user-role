@@ -2,10 +2,11 @@ import { deleteOneData, getAllData } from "@/shared"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
 
-export function useUsers() {
+export function useUsers(enableFetching = true) {
     const { data, isLoading } = useQuery({
         queryKey: ["users"],
         queryFn: () => getAllData<User>("user"),
+        enabled: enableFetching,
     })
     const dataState = data || []
     const [users, setUsers] = useState(dataState)

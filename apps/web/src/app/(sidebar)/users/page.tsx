@@ -3,7 +3,7 @@ import { Users } from "@/features"
 import { Button, H3 } from "@/shared"
 import Link from "next/link"
 
-export default function Page({}: PageProps) {
+export default async function Page({}: PageProps) {
     return (
         <div>
             <div className="flex justify-between">

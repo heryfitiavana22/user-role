@@ -12,9 +12,19 @@ export function useUserConnected() {
         imageURL: session.data?.user?.image || undefined,
         role: (session.data?.user as any)?.role as Role,
     } as User
+    const ability = defineAbilityForUser(user)
 
     return {
         user,
-        Can: createCanBoundTo(defineAbilityForUser(user)),
+        Can: createCanBoundTo(ability),
+        ability,
+        canSeeService: (service: string) => {
+            return (
+                ability.can("read", service) ||
+                ability.can("create", service) ||
+                ability.can("update", service) ||
+                ability.can("delete", service)
+            )
+        },
     }
 }
