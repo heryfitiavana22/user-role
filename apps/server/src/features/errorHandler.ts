@@ -15,4 +15,5 @@ export function errorHandler(
 
 export const errorMessage = {
     actionPermissionInvalid: "Invalid action",
+    cannotDeleteRole: "Cannot delete superadmin",
 } as const

@@ -7,15 +7,18 @@ export function TableAction({
     children,
     className,
     type,
+    disabled = false,
 }: TableActionProps) {
+    const classNameValue = classNames(
+        "tooltip tooltip-bottom cursor-pointer",
+        colorFactory(type, disabled),
+        className
+    )
+
     if (href)
         return (
             <Link
-                className={classNames(
-                    "tooltip tooltip-bottom cursor-pointer",
-                    colorFactory(type),
-                    className
-                )}
+                className={classNameValue}
                 data-tip={dataTipFactory(type)}
                 href={href}
             >
@@ -24,22 +27,15 @@ export function TableAction({
         )
 
     return (
-        <div
-            className={classNames(
-                "tooltip tooltip-bottom cursor-pointer",
-                colorFactory(type),
-                className
-            )}
-            data-tip={dataTipFactory(type)}
-        >
+        <div className={classNameValue} data-tip={dataTipFactory(type)}>
             {children}
         </div>
     )
 }
 
-function colorFactory(type: TableActionType) {
-    if (type == "edit") return "text-blue-400"
-    if (type == "delete") return "text-red-400"
+function colorFactory(type: TableActionType, disabled = false) {
+    if (type == "edit") return disabled ? "text-blue-300" : "text-blue-400"
+    if (type == "delete") return disabled ? "text-red-300" : "text-red-400"
     return ""
 }
 
@@ -53,6 +49,7 @@ type TableActionProps = PropsWithChildren<{
     className?: string
     href?: string
     type: TableActionType
+    disabled?: boolean
 }>
 
 type TableActionType = "edit" | "delete"

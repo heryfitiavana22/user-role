@@ -1,0 +1,5 @@
+{
+    "compilerOptions": {
+        "types": ["types/index.d.ts"]
+    }
+}

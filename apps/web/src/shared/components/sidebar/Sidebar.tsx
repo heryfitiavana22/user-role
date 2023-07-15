@@ -1,22 +1,16 @@
 "use client"
 import { useState } from "react"
-import {
-    CloseIcon,
-    DashboardIcon,
-    MenuIcon,
-    RoleIcon,
-    StatisticsIcon,
-    UsersIcon,
-} from "../icons"
+import { CloseIcon, MenuIcon } from "../icons"
 import { IconWrapper, PersonConnected } from "./components"
 import classNames from "classnames"
 import { usePathname } from "next/navigation"
-import { Routes } from "@/Routes"
 import { ItemsSidebar } from "./ItemsSidebar"
+import { useUserConnected } from "@/shared/hooks"
 
 export function Sidebar({}: SidebarProps) {
     const [isOpen, setIsOpen] = useState(false)
     const pathname = usePathname()
+    const { Can } = useUserConnected()
 
     return (
         <nav className="grid w-full h-14 px-3 md:px-0 md:justify-center md:h-auto md:w-14 md:pt-6 bg-gray-100 rounded-md">
@@ -33,14 +27,15 @@ export function Sidebar({}: SidebarProps) {
                     >
                         <div className="flex flex-col items-baseline md:block">
                             {ItemsSidebar.map((item, k) => (
-                                <IconWrapper
-                                    name={item.name}
-                                    href={item.link}
-                                    isActive={pathname.includes(item.link)}
-                                    key={k}
-                                >
-                                    <item.Icon />
-                                </IconWrapper>
+                                <Can I="read" a={item.service} key={k}>
+                                    <IconWrapper
+                                        name={item.name}
+                                        href={item.link}
+                                        isActive={pathname.includes(item.link)}
+                                    >
+                                        <item.Icon />
+                                    </IconWrapper>
+                                </Can>
                             ))}
                         </div>
                         <div

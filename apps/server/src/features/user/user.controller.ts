@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { UserService } from "./user.service"
 import * as bcrypt from "bcrypt"
 import { generatePassword } from "./user.helper"
+import { isSuperAdmin } from "functions"
 export class UserController {
     constructor(private service: UserService) {}
 
@@ -68,6 +69,11 @@ export class UserController {
         request: Request<{ id: string }>,
         response: Response
     ) => {
+        const userFind = await this.service.findOneById(request.params.id)
+        if (userFind && isSuperAdmin(userFind.role))
+            return response
+                .status(401)
+                .send({ message: "Cannot delete superadmin" })
         const data = await this.service.deleteOneById(request.params.id)
         response.send(data)
     }

@@ -1,5 +1,13 @@
 import { Routes } from "@/Routes"
-import { DashboardIcon, RoleIcon, StatisticsIcon, UsersIcon } from "../icons"
+import {
+    DashboardIcon,
+    ForumIcon,
+    NewsLetterIcon,
+    PostIcon,
+    RoleIcon,
+    StatisticsIcon,
+    UsersIcon,
+} from "../icons"
 
 export const ItemsSidebar = [
     {
@@ -19,6 +27,24 @@ export const ItemsSidebar = [
         link: Routes.roles(),
         service: "roles",
         Icon: RoleIcon,
+    },
+    {
+        name: "Forum",
+        link: Routes.forum(),
+        service: "forum",
+        Icon: ForumIcon,
+    },
+    {
+        name: "Post",
+        link: Routes.post(),
+        service: "post",
+        Icon: PostIcon,
+    },
+    {
+        name: "Newsletter",
+        link: Routes.newsletter(),
+        service: "newsletter",
+        Icon: NewsLetterIcon,
     },
     {
         name: "Statistiques",

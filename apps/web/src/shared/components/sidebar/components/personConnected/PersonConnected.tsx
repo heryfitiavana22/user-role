@@ -3,9 +3,10 @@ import Image from "next/image"
 import { UserOption } from "./components"
 import { LogOutIcon, SettingsIcon } from "@/shared/components/icons"
 import { staticImageURL, useUserConnected } from "@/shared"
+import { signOut } from "next-auth/react"
 
 export function PersonConnected({}: PersonConnectedProps) {
-    const user = useUserConnected()
+    const { user } = useUserConnected()
 
     return (
         <div className="flex justify-center bg-transparent">
@@ -30,6 +31,7 @@ export function PersonConnected({}: PersonConnectedProps) {
                         <UserOption
                             name="Se déconnecter"
                             icon={<LogOutIcon />}
+                            onClick={() => signOut()}
                         />
                     </li>
                 </ul>

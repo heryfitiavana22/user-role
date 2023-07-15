@@ -2,7 +2,9 @@ import { FormUser } from "@/features"
 import { H3, getAllData } from "@/shared"
 
 export default async function Page({}: PageProps) {
-    const roles = await getAllData<Role>("role")
+    const roles = await getAllData<Role>("role", "no-store")
+    // console.log();
+    
 
     return (
         <div>

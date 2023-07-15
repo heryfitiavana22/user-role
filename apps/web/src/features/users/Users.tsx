@@ -1,18 +1,7 @@
 "use client"
-import {
-    DeleteIcon,
-    EditIcon,
-    Loading,
-    Table,
-    TableAction,
-    Td,
-    Wrapper,
-    staticURL,
-} from "@/shared"
-import { TableUserSkeleton } from "./components"
-import { Routes } from "@/Routes"
+import { Loading, Table, Wrapper } from "@/shared"
+import { TableRow, TableUserSkeleton } from "./components"
 import { useUsers } from "./hooks"
-import Image from "next/image"
 
 export function Users({}: UsersProps) {
     const column = ["Nom", "Rôles", "Action"]
@@ -26,44 +15,7 @@ export function Users({}: UsersProps) {
                 Suspense={TableUserSkeleton}
                 isLoading={isLoading}
                 displayRow={(user) => (
-                    <tr>
-                        <Td>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <Image
-                                            src={staticURL(user.imageURL)}
-                                            alt=""
-                                            width={"100"}
-                                            height={"100"}
-                                        />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="font-bold">{user.name}</div>
-                                    <div className="text-sm opacity-50">
-                                        {user.email}
-                                    </div>
-                                </div>
-                            </div>
-                        </Td>
-                        <Td>{user.role.name}</Td>
-                        <Td>
-                            <div className="flex gap-2">
-                                <TableAction
-                                    type="edit"
-                                    href={Routes.editUser(user._id)}
-                                >
-                                    <EditIcon />
-                                </TableAction>
-                                <TableAction type="delete">
-                                    <DeleteIcon
-                                        onClick={() => onDelete(user._id)}
-                                    />
-                                </TableAction>
-                            </div>
-                        </Td>
-                    </tr>
+                    <TableRow user={user} onDelete={() => onDelete(user._id)} />
                 )}
             />
             {isRemoving && <Loading />}

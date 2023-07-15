@@ -2,9 +2,13 @@ import { Alert } from "@/shared"
 
 export function Message({ text, type = "default" }: MessageProps) {
     return (
-        <div className="w-fit mt-3">
-            <Alert type={type}>{text}</Alert>
-        </div>
+        <>
+            {text && (
+                <div className="w-fit mt-3">
+                    <Alert type={type}>{text}</Alert>
+                </div>
+            )}
+        </>
     )
 }
 

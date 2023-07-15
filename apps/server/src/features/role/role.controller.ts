@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { RoleService } from "./role.service"
 import { isCorrectRole, formatActionAll } from "./role.helper"
 import { errorMessage } from "../errorHandler"
+import { isSuperAdmin } from "functions"
 
 export class RoleController {
     constructor(private service: RoleService) {}
@@ -59,7 +60,13 @@ export class RoleController {
         request: Request<{ id: string }>,
         response: Response
     ) => {
-        const deleted = await this.service.deleteOneById(request.params.id)
+        const _id = request.params.id
+        const roleFind = await this.service.findOneById(_id)
+        if (roleFind && isSuperAdmin(roleFind as any))
+            return response
+                .status(401)
+                .send({ message: "Cannot delete superadmin" })
+        const deleted = await this.service.deleteOneById(_id)
         response.send(deleted)
     }
 }

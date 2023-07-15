@@ -3,6 +3,9 @@ import * as cors from "cors"
 import * as dotenv from "dotenv"
 import { userRouter, roleRouter } from "./features"
 import { connectToDatabase } from "./config"
+// import * as bcrytp  from "bcrypt"
+// console.log(bcrytp.hashSync("superadmin", 8));
+
 
 const app = express()
 dotenv.config()
