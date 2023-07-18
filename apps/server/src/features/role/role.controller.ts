@@ -4,6 +4,7 @@ import {
     isCorrectRole,
     formatActionAll,
     isRoleNameExisted,
+    isSameRoleName,
 } from "./role.helper"
 import { errorMessage } from "../errorHandler"
 import { isSuperAdmin } from "functions"
@@ -56,8 +57,8 @@ export class RoleController {
         response: Response
     ) => {
         const currentRole = request.body
-        const roles = await this.service.findAll()
-        if (isRoleNameExisted(roles, currentRole))
+        const roleFind = await this.service.findOneBy("name", currentRole.name)
+        if (roleFind && roleFind._id.toString() !== currentRole._id.toString())
             return response
                 .status(400)
                 .send({ message: errorMessage.roleExisted })

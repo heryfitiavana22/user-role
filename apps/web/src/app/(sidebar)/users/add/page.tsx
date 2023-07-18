@@ -1,9 +1,13 @@
 import { FormUser } from "@/features"
-import { H3, getAllData } from "@/shared"
+import { CannotDoService, H3, getAllData, useUserInServer } from "@/shared"
+import { services } from "data"
 
 export default async function Page({}: PageProps) {
+    const { ability } = await useUserInServer()
+    if (ability.cannot("create", services.users))
+        return <CannotDoService action="créer" service="utilisateurs" />
+
     const roles = await getAllData<Role>("role", "no-store")
-    // console.log();
 
     return (
         <div>

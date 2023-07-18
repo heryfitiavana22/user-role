@@ -8,48 +8,49 @@ import {
     StatisticsIcon,
     UsersIcon,
 } from "../icons"
+import { services } from "data"
 
 export const ItemsSidebar = [
     {
         name: "Dashboard",
         link: Routes.dashboard(),
-        service: "dashboard",
+        service: services.dashboard,
         Icon: DashboardIcon,
-    },
-    {
-        name: "Utilisateurs",
-        link: Routes.users(),
-        service: "users",
-        Icon: UsersIcon,
     },
     {
         name: "Rôles",
         link: Routes.roles(),
-        service: "roles",
+        service: services.roles,
         Icon: RoleIcon,
+    },
+    {
+        name: "Utilisateurs",
+        link: Routes.users(),
+        service: services.users,
+        Icon: UsersIcon,
     },
     {
         name: "Forum",
         link: Routes.forum(),
-        service: "forum",
+        service: services.forum,
         Icon: ForumIcon,
     },
     {
         name: "Post",
         link: Routes.post(),
-        service: "post",
+        service: services.post,
         Icon: PostIcon,
     },
     {
         name: "Newsletter",
         link: Routes.newsletter(),
-        service: "newsletter",
+        service: services.newsletter,
         Icon: NewsLetterIcon,
     },
     {
         name: "Statistiques",
         link: Routes.statistics(),
-        service: "statistics",
+        service: services.statistics,
         Icon: StatisticsIcon,
     },
 ]

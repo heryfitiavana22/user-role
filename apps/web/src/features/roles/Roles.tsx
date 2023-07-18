@@ -7,16 +7,18 @@ import {
     Td,
     Wrapper,
     Loading,
+    useUserConnected,
 } from "@/shared"
 import { PropsWithChildren } from "react"
 import { flatRolesAccess } from "./roles.helper"
-import { TableRoleSkeleton } from "./components"
-import { Routes } from "@/Routes"
+import { TableRoleSkeleton, TableRow } from "./components"
 import { useRoles } from "./hooks"
+import { services } from "data"
 
 export function Roles({}: RolesProps) {
     const column = ["Rôle", "Accès", "action"]
     const { roles, isLoading, isRemoving, onDelete } = useRoles()
+    const { ability } = useUserConnected()
 
     return (
         <Wrapper>
@@ -26,29 +28,12 @@ export function Roles({}: RolesProps) {
                 isLoading={isLoading}
                 data={flatRolesAccess(roles)}
                 displayRow={(role) => (
-                    <tr>
-                        <Td className="font-bold">{role.name}</Td>
-                        <Td className="w-4/5">
-                            <div className="h-10 overflow-hidden text-ellipsis">
-                                {role.access}
-                            </div>
-                        </Td>
-                        <Td>
-                            <div className="flex gap-2">
-                                <TableAction
-                                    type="edit"
-                                    href={Routes.editRole(role._id)}
-                                >
-                                    <EditIcon />
-                                </TableAction>
-                                <TableAction type="delete">
-                                    <DeleteIcon
-                                        onClick={() => onDelete(role._id)}
-                                    />
-                                </TableAction>
-                            </div>
-                        </Td>
-                    </tr>
+                    <TableRow
+                        role={role}
+                        onDelete={() => onDelete(role._id)}
+                        canEdit={ability.can("update", services.roles)}
+                        canDelete={ability.can("delete", services.roles)}
+                    />
                 )}
             />
             {isRemoving && <Loading />}

@@ -1,7 +1,7 @@
 export const services = {
     dashboard: "dashboard",
-    users: "users",
     roles: "roles",
+    users: "users",
     forum: "forum",
     post: "post",
     newsletter: "newsletter",

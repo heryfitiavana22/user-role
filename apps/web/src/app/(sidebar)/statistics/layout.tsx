@@ -1,4 +1,4 @@
-import { CannotSeeService, useUserInServer } from "@/shared"
+import { CannotDoService, useUserInServer } from "@/shared"
 import { PropsWithChildren } from "react"
 
 export default async function Layout({ children }: LayoutProps) {
@@ -9,7 +9,7 @@ export default async function Layout({ children }: LayoutProps) {
             {canSeeService("statistics") ? (
                 children
             ) : (
-                <CannotSeeService service="statistiques" />
+                <CannotDoService service="statistiques" />
             )}
         </>
     )

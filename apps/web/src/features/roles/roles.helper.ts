@@ -32,12 +32,6 @@ export function isServiceActionInPermissionsFlatted(
     return permissions.includes(`${action} ${service.toLowerCase()}`)
 }
 
-type FlatRole = {
-    _id: string
-    name: string
-    access: string
-}
-
 type Permissons = {
     permissions: Permission[]
 }

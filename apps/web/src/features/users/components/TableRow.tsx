@@ -4,8 +4,15 @@ import { isSuperAdmin } from "functions"
 import { PropsWithChildren } from "react"
 import Image from "next/image"
 
-export function TableRow({ user, onDelete }: TableRowProps) {
+export function TableRow({
+    user,
+    onDelete,
+    canDelete,
+    canEdit,
+}: TableRowProps) {
     const superAdmin = isSuperAdmin(user.role)
+    const editAuthorized = !superAdmin && canEdit
+    const deleteAuthorized = !superAdmin && canDelete
 
     return (
         <tr>
@@ -33,15 +40,17 @@ export function TableRow({ user, onDelete }: TableRowProps) {
                     <TableAction
                         type="edit"
                         href={
-                            superAdmin ? undefined : Routes.editUser(user._id)
+                            editAuthorized
+                                ? Routes.editUser(user._id)
+                                : undefined
                         }
-                        disabled={superAdmin}
+                        disabled={!editAuthorized}
                     >
                         <EditIcon />
                     </TableAction>
-                    <TableAction type="delete" disabled={superAdmin}>
+                    <TableAction type="delete" disabled={deleteAuthorized}>
                         <DeleteIcon
-                            onClick={superAdmin ? undefined : onDelete}
+                            onClick={deleteAuthorized ? onDelete : undefined}
                         />
                     </TableAction>
                 </div>
@@ -53,4 +62,6 @@ export function TableRow({ user, onDelete }: TableRowProps) {
 type TableRowProps = PropsWithChildren<{
     user: User
     onDelete: () => void
+    canEdit: boolean
+    canDelete: boolean
 }>

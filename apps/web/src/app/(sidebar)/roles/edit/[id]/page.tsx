@@ -1,10 +1,13 @@
 import { FormRole } from "@/features"
-import { H3 } from "@/shared"
-import { servicesList } from "data"
+import { CannotDoService, H3, useUserInServer } from "@/shared"
+import { servicesList, services as serviceData } from "data"
 
-export default function Page({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
+    const { ability } = await useUserInServer()
+    if (ability.cannot("create", serviceData.roles))
+        return <CannotDoService action="créer" service="rôles" />
+
     const services = servicesList
-
     return (
         <div>
             <H3>Modifier un rôle</H3>

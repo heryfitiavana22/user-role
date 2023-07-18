@@ -11,6 +11,10 @@ export class RoleService {
         return this.Role.find({ [by]: value }).exec()
     }
 
+    findOneBy = (by: RoleKeys, value: string) => {
+        return this.Role.findOne({ [by]: value }).exec()
+    }
+
     findOneById = (_id: string) => {
         return this.Role.findById(_id).exec()
     }

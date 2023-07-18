@@ -21,10 +21,13 @@ export function formatActionAll(role: Role): Role {
 
 export function isRoleNameExisted(roles: Role[], currentRole: Role) {
     for (let role of roles) {
-        if (role.name.toLowerCase() == currentRole.name.toLowerCase())
-            return true
+        if (isSameRoleName(role, currentRole)) return true
     }
     return false
+}
+
+export function isSameRoleName(role1: Role, role2: Role) {
+    return role1.name.toLowerCase() == role2.name.toLowerCase()
 }
 
 export function isCorrectRole(role: Role) {
