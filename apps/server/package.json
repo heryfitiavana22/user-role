@@ -20,7 +20,8 @@
     "generate-password": "^1.7.0",
     "mongoose": "^7.2.2",
     "nodemailer": "^6.9.3",
-    "functions": "workspace:*"
+    "functions": "workspace:*",
+    "data": "workspace:*"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

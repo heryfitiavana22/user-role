@@ -9,7 +9,10 @@ export async function updateOneData<T>(uri: KeyURL, data: T): Promise<T> {
         body: JSON.stringify(data),
     })
 
-    if (!response.ok) throw new Error("Error on udpating data")
-
-    return await response.json()
+    const responseJSON = await response.json()
+    if (!response.ok)
+        throw new Error(
+            responseJSON?.message || "Erreur lors de la modification"
+        )
+    return responseJSON
 }

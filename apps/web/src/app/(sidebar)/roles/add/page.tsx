@@ -1,8 +1,9 @@
 import { FormRole } from "@/features"
 import { H3 } from "@/shared"
+import { servicesList } from "data"
 
 export default function Page({}: PageProps) {
-    const services = ["Newsletter", "Post", "Forum"]
+    const services = servicesList
 
     return (
         <div>

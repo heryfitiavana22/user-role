@@ -20,11 +20,9 @@ export function useFormSubmit(type: CreateOrUpdate, onSuccess?: () => void) {
         onMutate() {
             setIsClicked(true)
         },
-        onError() {
+        onError(error) {
             setFormState({
-                message: `Erreur lors ${
-                    type == "create" ? "l'ajout" : "de la mise à jour"
-                } du rôle`,
+                message: error.message,
                 type: "error",
             })
         },

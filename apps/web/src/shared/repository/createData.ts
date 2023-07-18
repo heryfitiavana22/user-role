@@ -8,6 +8,9 @@ export async function createData<T>(uri: KeyURL, data: T): Promise<T> {
         headers: { "Content-type": getContentType(data) },
         body: JSON.stringify(data),
     })
-    if (!response.ok) throw new Error("Error on creating data")
-    return (await response.json()) as T
+
+    const responseJSON = await response.json()
+    if (!response.ok)
+        throw new Error(responseJSON?.message || "Erreur lors de la création")
+    return responseJSON as T
 }

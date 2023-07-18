@@ -9,11 +9,15 @@ export function errorHandler(
     if (error.message == errorMessage.actionPermissionInvalid)
         response
             .status(400)
-            .send({ error: errorMessage.actionPermissionInvalid })
+            .send({ message: errorMessage.actionPermissionInvalid })
     next()
 }
 
 export const errorMessage = {
     actionPermissionInvalid: "Invalid action",
-    cannotDeleteRole: "Cannot delete superadmin",
+    incorrectRole: "Rôle incorrect",
+    roleExisted: "Rôle déjà existant",
+    cannotDeleteRole: "Ne peut pas supprimer le superadmin",
+    invalidPassword: "Mot de passe invalide",
+    emailExisted: "Email déjà existant",
 } as const

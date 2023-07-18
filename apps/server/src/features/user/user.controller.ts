@@ -3,6 +3,7 @@ import { UserService } from "./user.service"
 import * as bcrypt from "bcrypt"
 import { generatePassword } from "./user.helper"
 import { isSuperAdmin } from "functions"
+import { errorMessage } from "../errorHandler"
 export class UserController {
     constructor(private service: UserService) {}
 
@@ -39,7 +40,7 @@ export class UserController {
             userFind.password
         )
         if (isPasswordCorrect) return response.send(userFind)
-        response.status(401).send({ message: "invalid password" })
+        response.status(401).send({ message: errorMessage.invalidPassword })
     }
 
     add = async (request: Request<{}, {}, User>, response: Response) => {
@@ -47,7 +48,9 @@ export class UserController {
         const currentUser: User = { ...request.body, password }
         const userFind = await this.service.findOneByEmail(currentUser.email)
         if (userFind)
-            return response.status(401).send({ message: "email existed" })
+            return response
+                .status(401)
+                .send({ message: errorMessage.emailExisted })
         const data = await this.service.add(currentUser)
         // TODO : send mail to user the password
         response.send(data)
@@ -60,7 +63,9 @@ export class UserController {
         const currentUser = request.body
         const userFind = await this.service.findOneByEmail(currentUser.email)
         if (userFind && userFind.email !== currentUser.email)
-            return response.status(401).send({ message: "email existed" })
+            return response
+                .status(401)
+                .send({ message: errorMessage.emailExisted })
         const data = await this.service.updateOneById(currentUser)
         response.send(data)
     }
@@ -73,7 +78,7 @@ export class UserController {
         if (userFind && isSuperAdmin(userFind.role))
             return response
                 .status(401)
-                .send({ message: "Cannot delete superadmin" })
+                .send({ message: errorMessage.cannotDeleteRole })
         const data = await this.service.deleteOneById(request.params.id)
         response.send(data)
     }

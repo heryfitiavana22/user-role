@@ -1,6 +1,10 @@
 import { Request, Response } from "express"
 import { RoleService } from "./role.service"
-import { isCorrectRole, formatActionAll } from "./role.helper"
+import {
+    isCorrectRole,
+    formatActionAll,
+    isRoleNameExisted,
+} from "./role.helper"
 import { errorMessage } from "../errorHandler"
 import { isSuperAdmin } from "functions"
 
@@ -30,13 +34,19 @@ export class RoleController {
     }
 
     add = async (request: Request<{}, {}, Role>, response: Response) => {
-        const isCorrect = isCorrectRole(request.body)
+        const currentRole = request.body
+        const roles = await this.service.findAll()
+        if (isRoleNameExisted(roles, currentRole))
+            return response
+                .status(400)
+                .send({ message: errorMessage.roleExisted })
+        const isCorrect = isCorrectRole(currentRole)
         if (!isCorrect)
             return response
                 .status(400)
-                .send({ error: errorMessage.actionPermissionInvalid })
+                .send({ message: errorMessage.incorrectRole })
 
-        const roleFormatted = formatActionAll(request.body)
+        const roleFormatted = formatActionAll(currentRole)
         const newRole = await this.service.add(roleFormatted)
         response.send(newRole)
     }
@@ -45,13 +55,19 @@ export class RoleController {
         request: Request<{}, {}, Role>,
         response: Response
     ) => {
-        const isCorrect = isCorrectRole(request.body)
+        const currentRole = request.body
+        const roles = await this.service.findAll()
+        if (isRoleNameExisted(roles, currentRole))
+            return response
+                .status(400)
+                .send({ message: errorMessage.roleExisted })
+        const isCorrect = isCorrectRole(currentRole)
         if (!isCorrect)
             return response
                 .status(400)
-                .send({ error: errorMessage.actionPermissionInvalid })
+                .send({ message: errorMessage.incorrectRole })
 
-        const roleFormatted = formatActionAll(request.body)
+        const roleFormatted = formatActionAll(currentRole)
         const updated = await this.service.updateOneById(roleFormatted)
         response.send(updated)
     }
@@ -65,7 +81,7 @@ export class RoleController {
         if (roleFind && isSuperAdmin(roleFind as any))
             return response
                 .status(401)
-                .send({ message: "Cannot delete superadmin" })
+                .send({ message: errorMessage.cannotDeleteRole })
         const deleted = await this.service.deleteOneById(_id)
         response.send(deleted)
     }
