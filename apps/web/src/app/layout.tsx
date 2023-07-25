@@ -1,9 +1,9 @@
 import "./global.css"
-import { Poppins } from "next/font/google"
+import { Poppins, Inter } from "next/font/google"
 import { ReactQuery } from "./ReactQuery"
 import { NextAuth } from "./NextAuth"
 
-const font = Poppins({ weight: "400", subsets: ["latin"], fallback: ["arial"] })
+const poppins = Poppins({ weight: "400", subsets: ["latin"], fallback: ["arial"] })
 
 export default function RootLayout({
     children,
@@ -13,7 +13,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning={true}>
             <head></head>
-            <body className={font.className} suppressHydrationWarning={true}>
+            <body className={poppins.className} suppressHydrationWarning={true}>
                 <NextAuth>
                     <ReactQuery>{children}</ReactQuery>
                 </NextAuth>

@@ -1,6 +1,8 @@
 "use client"
+import classNames from "classnames"
 import { HTMLInputTypeAttribute, useState } from "react"
 import { FieldValues, Path, UseFormRegister } from "react-hook-form"
+import { Eye, EyeSlash } from "../icons"
 
 export function CustomInput<T extends FieldValues>({
     label,
@@ -10,23 +12,37 @@ export function CustomInput<T extends FieldValues>({
     name,
     required = false,
     defaultValue,
+    classNameInput,
 }: CustomInputProps<T>) {
-    const [show, setShow] = useState(false)
+    const [showPassword, setShowPassword] = useState(true)
+    const inputType =
+        type == "password" ? (showPassword ? "password" : "text") : type
 
     return (
-        <div className="form-control w-full max-w-xs">
+        <div className="relative form-control w-full max-w-xs">
             {label && (
                 <label className="label">
                     <span className="label-text">{label}</span>
                 </label>
             )}
             <input
-                type={type}
+                type={inputType}
                 placeholder={placeholder}
-                className="input input-bordered w-full max-w-xs"
+                className={classNames(
+                    "input input-bordered w-full max-w-xs",
+                    classNameInput
+                )}
                 defaultValue={defaultValue}
                 {...register(name, { required })}
             />
+            {type == "password" && (
+                <span
+                    className="absolute bottom-3 right-2 cursor-pointer"
+                    onClick={() => setShowPassword(!showPassword)}
+                >
+                    {showPassword ? <EyeSlash /> : <Eye />}
+                </span>
+            )}
         </div>
     )
 }
@@ -39,4 +55,5 @@ type CustomInputProps<T extends FieldValues> = {
     name: Path<T>
     required?: boolean
     defaultValue?: string
+    classNameInput?: string
 }

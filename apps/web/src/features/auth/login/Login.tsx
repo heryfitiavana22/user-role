@@ -2,7 +2,7 @@
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { useLogin } from "./hooks"
-import { Button, H3, Loading } from "@/shared"
+import { Button, CustomInput, H3, Loading } from "@/shared"
 
 export type LoginValue = {
     email: string
@@ -18,26 +18,24 @@ export function Login({}: LoginProps) {
             <H3>Login</H3>
             <form className="grid gap-5" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Email :</span>
-                    </label>
-                    <input
+                    <CustomInput
+                        name="email"
+                        register={register}
                         type="email"
+                        label="Email :"
                         placeholder="adresse email"
-                        className="input bg-gray-100 w-full max-w-xs"
-                        {...register("email")}
+                        classNameInput="bg-gray-100"
                         required
                     />
                 </div>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Mot de passe :</span>
-                    </label>
-                    <input
+                    <CustomInput
+                        name="password"
+                        register={register}
                         type="password"
+                        label="Mot de passe :"
                         placeholder="mot de passe"
-                        className="input bg-gray-100 w-full max-w-xs"
-                        {...register("password")}
+                        classNameInput="bg-gray-100"
                         required
                     />
                 </div>
