@@ -9,7 +9,7 @@ export default async function Page({}: PageProps) {
 
     const services = servicesList
     return (
-        <div>
+        <div className="overflow-auto">
             <H3>Ajouter un rôle</H3>
             <FormRole type="create" services={services} />
         </div>

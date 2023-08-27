@@ -1,12 +1,13 @@
 "use client"
-import { Loading, Table, Wrapper, useUserConnected } from "@/shared"
+import { Loading, Pagination, Table, Wrapper, useUserConnected } from "@/shared"
 import { TableRow, TableUserSkeleton } from "./components"
 import { useUsers } from "./hooks"
 import { services } from "data"
 
 export function Users({}: UsersProps) {
     const column = ["Nom", "Rôles", "Action"]
-    const { users, isLoading, isRemoving, onDelete } = useUsers()
+    const { users, isLoading, isRemoving, page, onDelete, nextPage, prevPage } =
+        useUsers()
     const { ability } = useUserConnected()
 
     return (
@@ -24,6 +25,12 @@ export function Users({}: UsersProps) {
                         canEdit={ability.can("update", services.users)}
                     />
                 )}
+            />
+            <Pagination
+                count={2}
+                currentPage={page}
+                nextPage={nextPage}
+                prevPage={prevPage}
             />
             {isRemoving && <Loading />}
         </Wrapper>

@@ -13,11 +13,11 @@ function title({ as = "h1", classNameHigh }: TitleParams) {
 }
 
 export const H1 = title({ as: "h1", classNameHigh: "text-3xl font-bold" })
-export const H2 = title({ as: "h1", classNameHigh: "text-2xl font-bold" })
-export const H3 = title({ as: "h1", classNameHigh: "text-xl font-semibold" })
-export const H4 = title({ as: "h1", classNameHigh: "text-lg font-semibold" })
-export const H5 = title({ as: "h1", classNameHigh: "text-base font-semibold" })
-export const H6 = title({ as: "h1", classNameHigh: "text-base" })
+export const H2 = title({ as: "h2", classNameHigh: "text-2xl font-bold" })
+export const H3 = title({ as: "h3", classNameHigh: "text-xl font-semibold" })
+export const H4 = title({ as: "h4", classNameHigh: "text-lg font-semibold" })
+export const H5 = title({ as: "h5", classNameHigh: "text-base font-semibold" })
+export const H6 = title({ as: "h6", classNameHigh: "text-base" })
 
 type TitleParams = {
     as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"

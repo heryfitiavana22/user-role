@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 export function useRoles() {
     const { isLoading, data } = useQuery({
         queryKey: ["roles"],
-        queryFn: () => getAllData<Role>("role"),
+        queryFn: () => getAllData<Role>({ uri: "role" }),
     })
     const dataState = data || []
     const [roles, setRoles] = useState(dataState)

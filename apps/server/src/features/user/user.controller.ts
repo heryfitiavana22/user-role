@@ -7,8 +7,12 @@ import { errorMessage } from "../errorHandler"
 export class UserController {
     constructor(private service: UserService) {}
 
-    getAll = async (request: Request, response: Response) => {
-        const data = await this.service.findAll()
+    getAll = async (
+        request: Request<{}, {}, {}, { page?: string }>,
+        response: Response
+    ) => {
+        const page = request.query.page ? Number(request.query.page) : undefined
+        const data = await this.service.findAll(page)
         response.send(data)
     }
 

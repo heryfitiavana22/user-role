@@ -1,3 +1,4 @@
+import { ROWS } from "data"
 import { saltRound } from "../../config"
 import { UserModel, defaultUserImg } from "./User"
 import * as bcrypt from "bcrypt"
@@ -5,7 +6,14 @@ import * as bcrypt from "bcrypt"
 export class UserService {
     constructor(private User: UserModel) {}
 
-    findAll = () => {
+    findAll = (page?: number) => {
+        if (page)
+            return this.User.find()
+                .populate<{ role: Role }>("role")
+                .skip((page - 1) * ROWS)
+                .limit(ROWS)
+                .exec()
+
         return this.User.find().populate<{ role: Role }>("role").exec()
     }
 

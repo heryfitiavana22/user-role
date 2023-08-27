@@ -1,15 +1,23 @@
 import { KeyURL } from "./type"
 import { withServerURL } from "./utils"
 
-export async function getAllData<T>(
-    uri: KeyURL,
-    cache: RequestCache = "default"
-): Promise<T[]> {
-    const url = withServerURL(uri)
+export async function getAllData<T>({
+    uri,
+    cache = "default",
+    query,
+}: GetData): Promise<T[]> {
+    let url = withServerURL(uri)
+    if (query) url += query
     const response = await fetch(url, { cache })
     if (!response.ok) throw new Error("Erreur lors de la récupération")
     if (response.status == 200) return await response.json()
     return []
+}
+
+type GetData = {
+    uri: KeyURL
+    cache?: RequestCache
+    query?: string
 }
 
 export async function getAllDataBy<T>(

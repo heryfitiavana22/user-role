@@ -7,7 +7,7 @@ export default async function Page({}: PageProps) {
     if (ability.cannot("create", services.users))
         return <CannotDoService action="créer" service="utilisateurs" />
 
-    const roles = await getAllData<Role>("role", "no-store")
+    const roles = await getAllData<Role>({ uri: "role", cache: "no-store" })
 
     return (
         <div>

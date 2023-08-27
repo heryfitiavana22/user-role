@@ -35,19 +35,6 @@ export function Table<T>({
                     )}
                 </tbody>
             </table>
-            <div className="flex justify-end w-full mt-4">
-                <div className="join">
-                    <Button className="join-item">
-                        <ChevronLeft />
-                    </Button>
-                    <div className="grid place-items-center bg-primary text-white px-2 join-item">
-                        Pages 1 of 2
-                    </div>
-                    <Button className="join-item">
-                        <ChevronRight />
-                    </Button>
-                </div>
-            </div>
         </div>
     )
 }

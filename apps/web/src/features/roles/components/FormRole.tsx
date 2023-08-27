@@ -42,7 +42,7 @@ export function FormRole({ type, services, id }: FormRoleProps) {
     if (!!id && isLoading) return <Loading />
 
     return (
-        <form className="mt-5" onSubmit={handleSubmit(onSubmit(permissions))}>
+        <form className="mt-5 min-w-max" onSubmit={handleSubmit(onSubmit(permissions))}>
             <CustomInput
                 label="Rôle"
                 placeholder="nom du rôle"

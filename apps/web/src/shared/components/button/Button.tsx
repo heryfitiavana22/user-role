@@ -1,6 +1,6 @@
 import classNames from "classnames"
 import { ComponentProps } from "react"
-import { base, btnColor, btnSize } from "./button.css"
+import { base, btnColor, btnDisabled, btnSize } from "./button.css"
 
 export function Button({
     color = "primary",
@@ -8,6 +8,7 @@ export function Button({
     children,
     className,
     onClick,
+    disabled,
 }: ButtonProps) {
     return (
         <button
@@ -16,9 +17,11 @@ export function Button({
                 base,
                 btnColor[color],
                 btnSize[size],
+                disabled ? btnDisabled : "",
                 className
             )}
             onClick={onClick}
+            disabled={disabled}
         >
             {children}
         </button>
