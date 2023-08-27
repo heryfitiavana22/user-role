@@ -2,7 +2,7 @@
 
 A web application that manages user roles, such as whether or not a user can access a service.
 
-# Architecture
+## Architecture
 
 The project is made in monorepo, using turborepo and pnpm workspace, with the `apps` folder containing the applications, and the `packages` folder for shared modules.
 
