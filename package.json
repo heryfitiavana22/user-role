@@ -14,5 +14,8 @@
     "turbo": "^1.9.7"
   },
   "packageManager": "pnpm@7.15.0",
-  "name": "user-role"
+  "name": "user-role",
+  "engines": {
+    "node": ">=16.14"
+  }
 }
