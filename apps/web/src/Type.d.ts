@@ -5,5 +5,6 @@ namespace NodeJS {
         APP_NAME: string
         CONNECTION_URI: string
         APIKEY: string
+        NEXT_REMOTE_SERVER_URL: string
     }
 }
